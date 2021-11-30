@@ -110,13 +110,16 @@
      *  Added functions to fileOperations.cpp that return vectors of names of players and their scores
      *  Added an option for players to view the scoreboard aplphabetically(name order a-z) after the game ends
 
+#### 11/30
+    * Vincent
+     *  Outlined where all the combat log stuff and the enemies defeated stuff would go
+     
+# ESE224-Final/MidtermProject
 
-# ESE224-MidtermProject
-
-Stony Brook University's ESE 224 Midterm Project
+Stony Brook University's ESE 224 Final/Midterm Project
 
 ## Project Goal
-This project's goal is to create a playable text-based RPG consisting of 4 levels to satisfy the requirements of the ESE 224 (Advanced Programming and Data Structures) Midterm Project . 
+This project's goal is to create a playable text-based RPG consisting of 4 levels to satisfy the requirements of the ESE 224 (Advanced Programming and Data Structures) Final/Midterm Project . 
 ## Game Description
 You are a skeleton who has been condemned to the depths of hell. However, hell just isn't to your satisfaction, so you're escaping back to earth. Explore the path, defeat enemies, collect organs, and set yourself up to become a real person again. Succeed, and live a life of comfort back on earth. Fail, and become an unsuccessful ghost, forever stuck in the land of inbetween, neither satisfied on hell or reborn on earth. Succeed, and you're reborn on earth as a brand new being. 
 
