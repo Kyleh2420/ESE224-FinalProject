@@ -2,7 +2,7 @@
 * Final project time 
 * Possible memory leak when reading in empty file
 * BUGS 
-  * 
+  * Bugs go here
 * BALANCE THE FUCKING GAME YOU FUCK WHY AM I DYING BECUASE OF A BRICK TO THE FACE -- LOL
 # Reference Game: https://web.simple-mmo.com/
 
