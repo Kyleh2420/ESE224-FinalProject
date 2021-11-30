@@ -107,9 +107,10 @@
      *  Added an option for players to view the scoreboard aplphabetically(name order a-z) after the game ends
 
 #### 11/30
-    * Vincent
+   * Vincent
      *  Outlined where all the combat log stuff and the enemies defeated stuff would go
-     
+
+
 # ESE224-Final/MidtermProject
 
 Stony Brook University's ESE 224 Final/Midterm Project
