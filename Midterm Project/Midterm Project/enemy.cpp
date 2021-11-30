@@ -138,3 +138,13 @@ void enemy::randomizeSelector() {
     srand(time(0));
     selector = rand() % listOfNames.size();
 }
+
+void enemy::enemiesdefeated()
+{
+
+}
+
+void enemy::printenemiesdefeated()
+{
+
+}

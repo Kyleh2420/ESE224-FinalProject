@@ -91,6 +91,13 @@ void weaponsShop(player& p1) {
 					if (p1.getHP() <= 0) {
 						cout << "We're sorry, you have died!" << endl;
 						cout << "The game has now ended, but you can always restart!" << endl;
+						cout << "PRINT ENEMIES DEFEATED FUNCTION GOES HERE\n";
+						//FUNCTION TO PRINT STACK GOES HERE
+						//FUNCTION TO CLEAR STACK GOES HERE
+						//2. Create an operator overload of the operator<< to print the names and level of all the
+						//enemy objects in the entire stack.
+						//3. Create a function to clear the whole stack.This function should be called at the end of
+						//the program
 						loop = false;
 					}
 					p1.modMaxHP(weaponsList[selection-1].getMaxHP());
@@ -119,8 +126,11 @@ void weaponsShop(player& p1) {
 bool enemyCombat(enemy& e1, player& p1, scoreboard& p1Scoreboard) {
 	cout << "The enemy attacked you. " << -e1.getDMG()*e1.getLvl() << " HP." << endl;
 	p1.modHealth(-e1.getDMG() * e1.getLvl());
+	//FUNCTION TO PUSH EVENTS TO COMBAT LOG STACK
 	//If the user has died, then return false
 	if (p1.getHP() <= 0) {
+		//FUNCTION TO PRINT COMBAT LOG HERE
+		cout << "FUNCTION TO PRINT COMBAT LOG HERE\n";
 		return false;
 	}
 	else {
@@ -172,10 +182,15 @@ void playerCombat(player& p1, enemy& e1, scoreboard& p1Scoreboard) {
 					p1Scoreboard.addScore(1);
 					cout << "The enemy has died!"
 						<< "\nYou have earned " << e1.getMaxHP() << " coins." << endl;
+					//FUNCTION TO ADD ENEMIES TO STACK GOES HERE
+					//1. Create an insert function to add enemies to the top of the stack.
+					//FUNCTION TO PRINT COMBAT LOG HERE
+					cout << "FUNCTION TO PRINT COMBAT LOG HERE\n";
 					loop = false;
 				} else {
 					//p1.modBal(p1.getDMG());
 					cout << "You attacked the enemy, -" << p1.getDMG() << endl;
+					//FUNCTION TO PUSH EVENTS TO COMBAT LOG STACK
 					loop = enemyCombat(e1, p1, p1Scoreboard);
 				}
 				e1.modHealth(-p1.getDMG());
@@ -316,6 +331,13 @@ void game(player& p1, scoreboard& p1Scoreboard, fileOperations& files) {
 							if (p1.getHP() <= 0) {
 								cout << "We're sorry, you have died!" << endl;
 								cout << "The game has now ended, but you can always restart!" << endl;
+								cout << "PRINT ENEMIES DEFEATED FUNCTION GOES HERE\n";
+								//FUNCTION TO PRINT STACK GOES HERE
+								//FUNCTION TO CLEAR STACK GOES HERE
+								//2. Create an operator overload of the operator<< to print the names and level of all the
+								//enemy objects in the entire stack.
+								//3. Create a function to clear the whole stack.This function should be called at the end of
+								//the program
 								loop = false;
 								dead = true;
 							}
@@ -395,6 +417,13 @@ void game(player& p1, scoreboard& p1Scoreboard, fileOperations& files) {
 					//We clear the screen
 					cout << "\033[2J\033[1;1H";
 					cout << "A booming voice around you tells \" Congratulations, you have collected enough organs to become a person again! Go enjoy your life\"" << endl;
+					cout << "PRINT ENEMIES DEFEATED FUNCTION GOES HERE\n";
+					//FUNCTION TO PRINT STACK GOES HERE
+					//FUNCTION TO CLEAR STACK GOES HERE
+					//2. Create an operator overload of the operator<< to print the names and level of all the
+					//enemy objects in the entire stack.
+					//3. Create a function to clear the whole stack.This function should be called at the end of
+					//the program
 				}
 				else {
 					//We clear the screen
@@ -450,7 +479,7 @@ void alphabeticalScore(fileOperations& files, player& p1, scoreboard& p1Scoreboa
 	}
 }
 
-
+//should maybe keep the main program and then make another bigger menu program for all the menu stuff that has the scoreboard, search by name, enter game, quit, etc
 int main() {
 	player p1;
 	scoreboard p1Scoreboard;
