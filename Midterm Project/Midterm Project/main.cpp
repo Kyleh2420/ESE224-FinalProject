@@ -182,7 +182,7 @@ void playerCombat(player& p1, enemy& e1, scoreboard& p1Scoreboard) {
 					p1Scoreboard.addScore(1);
 					cout << "The enemy has died!"
 						<< "\nYou have earned " << e1.getMaxHP() << " coins." << endl;
-					//FUNCTION TO ADD ENEMIES TO STACK GOES HERE
+					cout << "FUNCTION TO ADD ENEMIES TO STACK GOES HERE\n";
 					//1. Create an insert function to add enemies to the top of the stack.
 					//FUNCTION TO PRINT COMBAT LOG HERE
 					cout << "FUNCTION TO PRINT COMBAT LOG HERE\n";
