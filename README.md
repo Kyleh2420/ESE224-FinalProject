@@ -1,6 +1,5 @@
 # Current To Do List
 * Final project time 
-* Possible memory leak when reading in empty file
 * BUGS 
   * Bugs go here
 * BALANCE THE FUCKING GAME YOU FUCK WHY AM I DYING BECUASE OF A BRICK TO THE FACE -- LOL
@@ -105,11 +104,12 @@
      *  Sorted the scoreboard from highest to lowest in the function as well
      *  Added functions to fileOperations.cpp that return vectors of names of players and their scores
      *  Added an option for players to view the scoreboard aplphabetically(name order a-z) after the game ends
-
 #### 11/30
    * Vincent
      *  Outlined where all the combat log stuff and the enemies defeated stuff would go
-
+#### 12/1
+   * Vincent and William
+     *  Finished combat log (task 8)
 
 # ESE224-Final/MidtermProject
 
@@ -152,5 +152,3 @@ The floor system is going to work like this:
 
 ## File Operations
 In the file operations class, we create 2 different files. The player file will store all information about the current game, as well as offer a way to load a game from a save file.
-
-
