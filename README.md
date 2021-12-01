@@ -107,6 +107,9 @@
 #### 11/30
    * Vincent
      *  Outlined where all the combat log stuff and the enemies defeated stuff would go
+#### 12/1
+   * Vincent and William
+     *  Finished combat log (task 8)
 
 # ESE224-Final/MidtermProject
 
