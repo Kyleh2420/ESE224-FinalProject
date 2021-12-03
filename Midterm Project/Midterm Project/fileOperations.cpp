@@ -25,6 +25,8 @@ void fileOperations::save2File(scoreboard& input) {
         exit(1);
     }
     sb_myFile   << input.getScore() << "\n"
+                << input.getBonus() << "\n"
+                << input.getTotal() << "\n"
                 << input.getDiff() << "\n"
                 << input.getFloor() << "\n"
                 << input.getPos() << endl;
@@ -38,7 +40,7 @@ void fileOperations::save2File(scoreboard& input, player& pl) {
         exit(1);
     }
     gsb_myFile << "Name: " << setw(16) << left << pl.getName()
-        << "Score: " << setw(10) << left << input.getScore() << "\n";
+        << "Score: " << setw(10) << left << input.getTotal() << "\n";
     
     closeFile();
 
@@ -174,6 +176,8 @@ void fileOperations::chooseFile(scoreboard& s, player& p) {
     }
     sb_myFile >> inputInt;
     s.setScore(inputInt);
+    sb_myFile >> inputInt;
+    s.setBonus(inputInt);
     sb_myFile >> inputInt;
     s.setDiff(inputInt);
     sb_myFile >> inputInt;

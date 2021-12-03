@@ -13,7 +13,8 @@ class scoreboard {
         int sbFloor;
         //Keeps track of what position on the floor the player is at
         int sbPos;
-
+        //Bonus points for side quests
+        int sbBonus;
     public:
         //Default constructor
         scoreboard();
@@ -23,14 +24,18 @@ class scoreboard {
         void setDiff(int input);
         void setFloor(int input);
         void setPos(int input);
+        void setBonus(int input);
 
         //Getters!
         int getScore();
         int getDiff();
         int getFloor();
         int getPos();
+        int getBonus();
+        int getTotal();
 
         void addScore(int input);
+        void addBonus(int input);
 
         //Print scoreboard
         void sbOut();

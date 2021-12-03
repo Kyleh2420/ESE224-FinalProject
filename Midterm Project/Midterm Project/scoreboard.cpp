@@ -19,6 +19,9 @@ void scoreboard::setFloor(int input) {
 void scoreboard::setPos(int input) {
     sbPos = input;
 }
+void scoreboard::setBonus(int input) {
+    sbBonus = input;
+}
 
 int scoreboard::getScore() {
     return sbScore;
@@ -31,6 +34,12 @@ int scoreboard::getFloor() {
 }
 int scoreboard::getPos() {
     return sbPos;
+}
+int scoreboard::getBonus() {
+    return sbBonus;
+}
+int scoreboard::getTotal() {
+    return getScore() + getBonus();
 }
 
 void scoreboard::addScore(int input) {
@@ -59,6 +68,11 @@ void scoreboard::addScore(int input) {
     default: tmp = " singular muscle fiber"; break;
     }
     cout << "You collected a" << tmp << endl;
+}
+
+void scoreboard::addBonus(int input)
+{
+    sbBonus += input;
 }
 
 void scoreboard::sbOut() {

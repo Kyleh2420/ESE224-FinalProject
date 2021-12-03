@@ -7,11 +7,12 @@
 #include <string>
 #include <vector>
 #include <iomanip>
+#include <queue>
 //player.h and scoreboard.h don't need to be called, since they are already called in fileOperations.h
 //If called again, it will result in a redefinition error
 using namespace std;
 
-
+queue<string> questCompleted;
 //Here, the user will be able to spend their coins on getting upgraded weapons.
 //This code uses a vector with the class Weapon to store all the information read from the file
 void weaponsShop(player& p1) {
@@ -272,6 +273,30 @@ void playerOptions(player& p1, fileOperations& files, scoreboard& p1Scoreboard) 
 	}
 }
 
+void checkQuest(player& p1, scoreboard& p1Scoreboard)
+{
+	switch (p1Scoreboard.getFloor())
+	{
+	case 1:
+		if (p1.getWeapon() == "Hand")
+			questCompleted.push("Don't Need a Weapon");
+		break;
+	case 2:
+		if (p1.getBal() == 10)
+			questCompleted.push("Money in the Bank");
+		break;
+	case 3:
+		if (p1.getDMG() > p1.getMaxHP())
+			questCompleted.push("Glass Cannon");
+		break;
+	case 4:
+		if ((p1.getHP() / p1.getMaxHP()) > 0.2)
+			questCompleted.push("Just a Scratch");
+		break;
+	default:
+		break;
+	}
+}
 
 void game(player& p1, scoreboard& p1Scoreboard, fileOperations& files) {
 	bool loop;
@@ -300,6 +325,27 @@ void game(player& p1, scoreboard& p1Scoreboard, fileOperations& files) {
 		randomComment quirkyComment(p1Scoreboard.getFloor());
 		//Primes the random event selector with the selector
 		cout << "The current floor is: " << p1Scoreboard.getFloor() << endl;
+		switch (p1Scoreboard.getFloor())
+		{
+		case 0:
+			cout << "Current Side Quest: (Don't Need a Weapon) Don't buy a weapon, Pass this floor with only the default weapon." << endl;
+			break;
+		case 1:
+			checkQuest(p1, p1Scoreboard);
+			cout << "Current Side Quest: (Money in the Bank) Save at least 10 coins." << endl;
+			break;
+		case 2:
+			checkQuest(p1, p1Scoreboard);
+			cout << "Current Side Quest: (Glass Cannon) Get damage higher than max HP." << endl;
+			break;
+		case 3:
+			checkQuest(p1, p1Scoreboard);
+			cout << "Current Side Quest: (JUst a Scratch) Survive with at least 20% HP remaining." << endl;
+			break;
+		case 4:
+			checkQuest(p1, p1Scoreboard);
+			break;
+		}
 		//We stay in this while loop as long as the usre has not reached the maximum position 
 		//Anotherwards, repeat the following loop until we run out of positions to advance to
 		while ((playGame.getCurrentPos() < playGame.getTotalPos()-1) && loop == true) {
