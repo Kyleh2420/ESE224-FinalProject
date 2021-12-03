@@ -110,6 +110,12 @@
 #### 12/1
    * Vincent and William
      *  Finished combat log (task 8)
+#### 12/3
+   * William
+     *  did the side quests
+     *  added new bonus score to scoreboard
+     *  DERRICK: make sure when getting the scores for the scoreboard youre using getTotal() instead of getScore()!!!
+     *  Everything should work...... i think
 
 # ESE224-Final/MidtermProject
 
