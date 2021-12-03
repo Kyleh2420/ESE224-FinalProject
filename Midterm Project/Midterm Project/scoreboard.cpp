@@ -62,7 +62,7 @@ void scoreboard::addScore(int input) {
     case 14: tmp = " tongue"; break;
     case 15: tmp = " piece of skin. You hope its big enough for yourself"; break;
     case 16: tmp = " singular eyeball"; break;
-    case 17: tmp = "n eardrum"; break;
+    case 17: tmp = " n eardrum"; break;
     case 18: tmp = " half of a nostril"; break;
     case 19: tmp = " singular hair folicle. You hope you're not bald again!"; break;
     default: tmp = " singular muscle fiber"; break;

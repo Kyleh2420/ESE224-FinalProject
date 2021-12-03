@@ -7,12 +7,73 @@
 #include <string>
 #include <vector>
 #include <iomanip>
+#include <stack>
 #include <queue>
 //player.h and scoreboard.h don't need to be called, since they are already called in fileOperations.h
 //If called again, it will result in a redefinition error
 using namespace std;
 
+stack<int> combatloghealthstack;
+stack<string> combatlognamestack;
+
+void reverseStackhp(stack<int> &st)
+{
+	int item;
+	stack<int> tmpStack;
+
+	while (st.empty() == false)
+	{
+		item = st.top();
+		st.pop();
+		tmpStack.push(item);
+	}
+
+	st = tmpStack;
+	return;
+}
+
+void reverseStackname(stack<string>& st)
+{
+	string item;
+	stack<string> tmpStack;
+
+	while (st.empty() == false)
+	{
+		item = st.top();
+		st.pop();
+		tmpStack.push(item);
+	}
+
+	st = tmpStack;
+	return;
+}
+
+void printcombatlog()
+{
+	reverseStackhp(combatloghealthstack);
+	reverseStackname(combatlognamestack);
+	cout << "Combat log: \n";
+	while (!combatloghealthstack.empty()) {
+		cout << combatlognamestack.top() << ": " << combatloghealthstack.top() << '\n';
+		combatlognamestack.pop();
+		combatloghealthstack.pop();
+	}
+	cout << endl;
+}
+
+void addtocombatlogplayer(player& p1)
+{
+	combatlognamestack.push(" " + p1.getName());
+	combatloghealthstack.push(p1.getHP());
+}
+
 queue<string> questCompleted;
+void addtocombatlogenemy(enemy& e1)
+{
+	combatlognamestack.push(e1.getName());
+	combatloghealthstack.push(e1.getHP());
+}
+
 //Here, the user will be able to spend their coins on getting upgraded weapons.
 //This code uses a vector with the class Weapon to store all the information read from the file
 void weaponsShop(player& p1) {
@@ -127,15 +188,16 @@ void weaponsShop(player& p1) {
 bool enemyCombat(enemy& e1, player& p1, scoreboard& p1Scoreboard) {
 	cout << "The enemy attacked you. " << -e1.getDMG()*e1.getLvl() << " HP." << endl;
 	p1.modHealth(-e1.getDMG() * e1.getLvl());
-	//FUNCTION TO PUSH EVENTS TO COMBAT LOG STACK
 	//If the user has died, then return false
 	if (p1.getHP() <= 0) {
-		//FUNCTION TO PRINT COMBAT LOG HERE
-		cout << "FUNCTION TO PRINT COMBAT LOG HERE\n";
+		combatlognamestack.push(" " + p1.getName());
+		combatloghealthstack.push(0);
+		printcombatlog();
 		return false;
 	}
 	else {
 		//The user is not dead yet. Keep the battle going
+		addtocombatlogplayer(p1);
 		return true;
 	}
 }
@@ -185,13 +247,14 @@ void playerCombat(player& p1, enemy& e1, scoreboard& p1Scoreboard) {
 						<< "\nYou have earned " << e1.getMaxHP() << " coins." << endl;
 					cout << "FUNCTION TO ADD ENEMIES TO STACK GOES HERE\n";
 					//1. Create an insert function to add enemies to the top of the stack.
-					//FUNCTION TO PRINT COMBAT LOG HERE
-					cout << "FUNCTION TO PRINT COMBAT LOG HERE\n";
+					combatlognamestack.push(e1.getName());
+					combatloghealthstack.push(0);
+					printcombatlog();
 					loop = false;
 				} else {
 					//p1.modBal(p1.getDMG());
 					cout << "You attacked the enemy, -" << p1.getDMG() << endl;
-					//FUNCTION TO PUSH EVENTS TO COMBAT LOG STACK
+					addtocombatlogenemy(e1);
 					loop = enemyCombat(e1, p1, p1Scoreboard);
 				}
 				e1.modHealth(-p1.getDMG());
