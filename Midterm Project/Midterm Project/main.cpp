@@ -15,6 +15,7 @@ using namespace std;
 
 stack<int> combatloghealthstack;
 stack<string> combatlognamestack;
+queue<string> questCompleted;
 
 void reverseStackhp(stack<int> &st)
 {
@@ -67,7 +68,6 @@ void addtocombatlogplayer(player& p1)
 	combatloghealthstack.push(p1.getHP());
 }
 
-queue<string> questCompleted;
 void addtocombatlogenemy(enemy& e1)
 {
 	combatlognamestack.push(e1.getName());
