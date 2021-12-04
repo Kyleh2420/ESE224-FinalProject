@@ -2,12 +2,13 @@
 #include <fstream>
 #include <iomanip>
 #include <vector>
+#include "stack.h"
 #ifndef PLAYER
 #define PLAYER
 #include "player.h"
 #include "weapon.h"
 #endif
-
+/*
 //The weapons shop handler
 class weaponsShop {
     private:
@@ -24,7 +25,7 @@ class weaponsShop {
     void weaponShop(player& p1);
     void shopStartup(player& p1);
 };
-
+*/
 
 class weaponsShopv2 {
     private:
@@ -58,9 +59,9 @@ class shop {
 
 
     //Tmp vars to be loaded in
-    int cost, dmg;
-    int maxHP, HP;
-    string name;
+    int cost=0, dmg=0;
+    int maxHP=0, HP=0;
+    string name="";
     public:
     //The following functions really drive the program
         shop(player& p1, int floor);

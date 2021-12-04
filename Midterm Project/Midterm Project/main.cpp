@@ -470,7 +470,6 @@ void game(player& p1, scoreboard& p1Scoreboard, fileOperations& files) {
 				cout << "A booming voice around you yells \"Congratulations, you have passed this level!\"" << endl;
 			}
 		}
-
 	}
 	
 	//Tests
@@ -562,7 +561,7 @@ Create a function to search the whole scoreboard list created previously for any
 repeat.If any names repeat, then take the average of all the scores.Then add this averaged
 score to the new scoreboard.
 Insert the averaged score into the proper place, so that the list is sorted already from highest to
-lowest.If a name doesn’t repeat, then also add that score to the list as well.*/
+lowest.If a name doesnï¿½t repeat, then also add that score to the list as well.*/
 void averageScoreboad(std::list<scoreboard>& list, std::list<scoreboard>& newlist) {
 	int sum = 0;
 	int count = 0;

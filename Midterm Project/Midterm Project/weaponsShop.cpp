@@ -1,6 +1,7 @@
 #include "weaponsShop.h"
+#include "stack.h"
 
-
+/*
 //Here, the user will be able to spend their coins on getting upgraded weapons.
 //This code uses a vector with the class Weapon to store all the information read from the file
 void weaponsShop::weaponShop(player& p1) {
@@ -106,7 +107,7 @@ void weaponsShop::shopStartup(player& p1) {
 	}
 }
 
-
+*/
 //Below this point is used for weaponShopv2, the second iteration of weaponsShop
 
 
@@ -191,6 +192,7 @@ void weaponsShopv2::deleteAll() {
 
 void weaponsShopv2::purchaseProduct(player & p1) {
     char selection;
+        stack <weaponNodePtr> itemStack;
     if (p1.getBal() < current->getCost()) {
         cout << "Sorry, you can't afford " << current->getItem() << endl;
     } else if (p1.getBal() >= current->getCost()) {
@@ -209,6 +211,7 @@ void weaponsShopv2::purchaseProduct(player & p1) {
             }
             p1.modBal(-current->getCost());
             cout << "You brought " << current->getItem() << "!" << endl;
+            itemStack.push(current);
         } else {
             cout << "Alright, we won't buy that item" << endl;
         }

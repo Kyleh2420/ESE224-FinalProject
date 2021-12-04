@@ -27,6 +27,7 @@
     <ClCompile Include="randomComment.cpp" />
     <ClCompile Include="randomEvents.cpp" />
     <ClCompile Include="scoreboard.cpp" />
+    <ClCompile Include="stack.cpp" />
     <ClCompile Include="weapon.cpp" />
     <ClCompile Include="weaponsShop.cpp" />
   </ItemGroup>
@@ -38,6 +39,7 @@
     <ClInclude Include="randomComment.h" />
     <ClInclude Include="randomEvents.h" />
     <ClInclude Include="scoreboard.h" />
+    <ClInclude Include="stack.h" />
     <ClInclude Include="Weapon.h" />
     <ClInclude Include="weaponsShop.h" />
   </ItemGroup>

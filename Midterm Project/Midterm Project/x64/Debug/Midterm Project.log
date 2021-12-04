@@ -1,1 +1,57 @@
-﻿  Midterm Project.vcxproj -> C:\Users\derri\Source\Repos\ESE224-FinalProject2\Midterm Project\x64\Debug\Midterm Project.exe
+﻿  main.cpp
+D:\Stony Brook University\2 - Sophomore Year\ESE 224\Final Project\ESE224-FinalProject\Midterm Project\Midterm Project\main.cpp(20,6): error C2872: 'stack': ambiguous symbol
+D:\Stony Brook University\2 - Sophomore Year\ESE 224\Final Project\ESE224-FinalProject\Midterm Project\Midterm Project\stack.h(6,20): message : could be 'stack'
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\include\stack(23,1): message : or       'std::stack'
+D:\Stony Brook University\2 - Sophomore Year\ESE 224\Final Project\ESE224-FinalProject\Midterm Project\Midterm Project\main.cpp(21,6): error C2872: 'stack': ambiguous symbol
+D:\Stony Brook University\2 - Sophomore Year\ESE 224\Final Project\ESE224-FinalProject\Midterm Project\Midterm Project\stack.h(6,20): message : could be 'stack'
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\include\stack(23,1): message : or       'std::stack'
+D:\Stony Brook University\2 - Sophomore Year\ESE 224\Final Project\ESE224-FinalProject\Midterm Project\Midterm Project\main.cpp(24,26): error C2872: 'stack': ambiguous symbol
+D:\Stony Brook University\2 - Sophomore Year\ESE 224\Final Project\ESE224-FinalProject\Midterm Project\Midterm Project\stack.h(6,20): message : could be 'stack'
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\include\stack(23,1): message : or       'std::stack'
+D:\Stony Brook University\2 - Sophomore Year\ESE 224\Final Project\ESE224-FinalProject\Midterm Project\Midterm Project\main.cpp(27,7): error C2872: 'stack': ambiguous symbol
+D:\Stony Brook University\2 - Sophomore Year\ESE 224\Final Project\ESE224-FinalProject\Midterm Project\Midterm Project\stack.h(6,20): message : could be 'stack'
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\include\stack(23,1): message : or       'std::stack'
+D:\Stony Brook University\2 - Sophomore Year\ESE 224\Final Project\ESE224-FinalProject\Midterm Project\Midterm Project\main.cpp(29,12): error C2039: 'empty': is not a member of 'stack<int>'
+D:\Stony Brook University\2 - Sophomore Year\ESE 224\Final Project\ESE224-FinalProject\Midterm Project\Midterm Project\main.cpp(20): message : see declaration of 'stack<int>'
+D:\Stony Brook University\2 - Sophomore Year\ESE 224\Final Project\ESE224-FinalProject\Midterm Project\Midterm Project\main.cpp(31,12): error C2248: 'stack<int>::top': cannot access private member declared in class 'stack<int>'
+D:\Stony Brook University\2 - Sophomore Year\ESE 224\Final Project\ESE224-FinalProject\Midterm Project\Midterm Project\stack.h(8): message : see declaration of 'stack<int>::top'
+D:\Stony Brook University\2 - Sophomore Year\ESE 224\Final Project\ESE224-FinalProject\Midterm Project\Midterm Project\main.cpp(20): message : see declaration of 'stack<int>'
+D:\Stony Brook University\2 - Sophomore Year\ESE 224\Final Project\ESE224-FinalProject\Midterm Project\Midterm Project\main.cpp(31,12): error C2064: term does not evaluate to a function taking 0 arguments
+D:\Stony Brook University\2 - Sophomore Year\ESE 224\Final Project\ESE224-FinalProject\Midterm Project\Midterm Project\main.cpp(40,28): error C2872: 'stack': ambiguous symbol
+D:\Stony Brook University\2 - Sophomore Year\ESE 224\Final Project\ESE224-FinalProject\Midterm Project\Midterm Project\stack.h(6,20): message : could be 'stack'
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\include\stack(23,1): message : or       'std::stack'
+D:\Stony Brook University\2 - Sophomore Year\ESE 224\Final Project\ESE224-FinalProject\Midterm Project\Midterm Project\main.cpp(43,7): error C2872: 'stack': ambiguous symbol
+D:\Stony Brook University\2 - Sophomore Year\ESE 224\Final Project\ESE224-FinalProject\Midterm Project\Midterm Project\stack.h(6,20): message : could be 'stack'
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\include\stack(23,1): message : or       'std::stack'
+D:\Stony Brook University\2 - Sophomore Year\ESE 224\Final Project\ESE224-FinalProject\Midterm Project\Midterm Project\main.cpp(45,12): error C2039: 'empty': is not a member of 'stack<std::string>'
+D:\Stony Brook University\2 - Sophomore Year\ESE 224\Final Project\ESE224-FinalProject\Midterm Project\Midterm Project\main.cpp(21): message : see declaration of 'stack<std::string>'
+D:\Stony Brook University\2 - Sophomore Year\ESE 224\Final Project\ESE224-FinalProject\Midterm Project\Midterm Project\main.cpp(47,12): error C2248: 'stack<std::string>::top': cannot access private member declared in class 'stack<std::string>'
+D:\Stony Brook University\2 - Sophomore Year\ESE 224\Final Project\ESE224-FinalProject\Midterm Project\Midterm Project\stack.h(8): message : see declaration of 'stack<std::string>::top'
+D:\Stony Brook University\2 - Sophomore Year\ESE 224\Final Project\ESE224-FinalProject\Midterm Project\Midterm Project\main.cpp(21): message : see declaration of 'stack<std::string>'
+D:\Stony Brook University\2 - Sophomore Year\ESE 224\Final Project\ESE224-FinalProject\Midterm Project\Midterm Project\main.cpp(47,12): error C2064: term does not evaluate to a function taking 0 arguments
+D:\Stony Brook University\2 - Sophomore Year\ESE 224\Final Project\ESE224-FinalProject\Midterm Project\Midterm Project\main.cpp(61,31): error C2039: 'empty': is not a member of 'stack<int>'
+D:\Stony Brook University\2 - Sophomore Year\ESE 224\Final Project\ESE224-FinalProject\Midterm Project\Midterm Project\main.cpp(20): message : see declaration of 'stack<int>'
+D:\Stony Brook University\2 - Sophomore Year\ESE 224\Final Project\ESE224-FinalProject\Midterm Project\Midterm Project\main.cpp(62,29): error C2248: 'stack<std::string>::top': cannot access private member declared in class 'stack<std::string>'
+D:\Stony Brook University\2 - Sophomore Year\ESE 224\Final Project\ESE224-FinalProject\Midterm Project\Midterm Project\stack.h(8): message : see declaration of 'stack<std::string>::top'
+D:\Stony Brook University\2 - Sophomore Year\ESE 224\Final Project\ESE224-FinalProject\Midterm Project\Midterm Project\main.cpp(21): message : see declaration of 'stack<std::string>'
+D:\Stony Brook University\2 - Sophomore Year\ESE 224\Final Project\ESE224-FinalProject\Midterm Project\Midterm Project\main.cpp(62,29): error C2064: term does not evaluate to a function taking 0 arguments
+D:\Stony Brook University\2 - Sophomore Year\ESE 224\Final Project\ESE224-FinalProject\Midterm Project\Midterm Project\main.cpp(62,67): error C2248: 'stack<int>::top': cannot access private member declared in class 'stack<int>'
+D:\Stony Brook University\2 - Sophomore Year\ESE 224\Final Project\ESE224-FinalProject\Midterm Project\Midterm Project\stack.h(8): message : see declaration of 'stack<int>::top'
+D:\Stony Brook University\2 - Sophomore Year\ESE 224\Final Project\ESE224-FinalProject\Midterm Project\Midterm Project\main.cpp(20): message : see declaration of 'stack<int>'
+D:\Stony Brook University\2 - Sophomore Year\ESE 224\Final Project\ESE224-FinalProject\Midterm Project\Midterm Project\main.cpp(62,67): error C2064: term does not evaluate to a function taking 0 arguments
+D:\Stony Brook University\2 - Sophomore Year\ESE 224\Final Project\ESE224-FinalProject\Midterm Project\Midterm Project\main.cpp(167,16): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+  stack.cpp
+D:\Stony Brook University\2 - Sophomore Year\ESE 224\Final Project\ESE224-FinalProject\Midterm Project\Midterm Project\stack.cpp(17,19): error C2760: syntax error: unexpected token 'return', expected 'expression'
+D:\Stony Brook University\2 - Sophomore Year\ESE 224\Final Project\ESE224-FinalProject\Midterm Project\Midterm Project\stack.cpp(17,19): error C2760: syntax error: unexpected token 'return', expected ':'
+D:\Stony Brook University\2 - Sophomore Year\ESE 224\Final Project\ESE224-FinalProject\Midterm Project\Midterm Project\stack.cpp(21,25): error C2760: syntax error: unexpected token 'return', expected 'expression'
+D:\Stony Brook University\2 - Sophomore Year\ESE 224\Final Project\ESE224-FinalProject\Midterm Project\Midterm Project\stack.cpp(21,25): error C2760: syntax error: unexpected token 'return', expected ':'
+  weaponsShop.cpp
+D:\Stony Brook University\2 - Sophomore Year\ESE 224\Final Project\ESE224-FinalProject\Midterm Project\Midterm Project\stack.h(18,2): error C2953: 'stack': class template has already been defined
+D:\Stony Brook University\2 - Sophomore Year\ESE 224\Final Project\ESE224-FinalProject\Midterm Project\Midterm Project\stack.h(6): message : see declaration of 'stack'
+D:\Stony Brook University\2 - Sophomore Year\ESE 224\Final Project\ESE224-FinalProject\Midterm Project\Midterm Project\weaponsShop.cpp(195,31): error C2512: 'stack': no appropriate default constructor available
+D:\Stony Brook University\2 - Sophomore Year\ESE 224\Final Project\ESE224-FinalProject\Midterm Project\Midterm Project\stack.h(6,26): message : see declaration of 'stack'
+D:\Stony Brook University\2 - Sophomore Year\ESE 224\Final Project\ESE224-FinalProject\Midterm Project\Midterm Project\weaponsShop.cpp(214,35): error C2662: 'void stack<T>::push(T)': cannot convert 'this' pointer from 'stack' to 'stack<T> &'
+D:\Stony Brook University\2 - Sophomore Year\ESE 224\Final Project\ESE224-FinalProject\Midterm Project\Midterm Project\weaponsShop.cpp(214,35): message : Reason: cannot convert from 'stack' to 'stack<T>'
+D:\Stony Brook University\2 - Sophomore Year\ESE 224\Final Project\ESE224-FinalProject\Midterm Project\Midterm Project\weaponsShop.cpp(214,13): message : Conversion requires a second user-defined-conversion operator or constructor
+D:\Stony Brook University\2 - Sophomore Year\ESE 224\Final Project\ESE224-FinalProject\Midterm Project\Midterm Project\stack.h(12,14): message : see declaration of 'stack<T>::push'
+  Generating Code...
