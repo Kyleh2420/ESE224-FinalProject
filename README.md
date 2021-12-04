@@ -121,6 +121,10 @@
       * I will turn weapon into a node type thing, and weapons list is the manager. (Not Done)
       * Didn't want to clog up main.cpp with the manager files and stuff. (Not Done)
       * Enemy now extends player. Player's private variables redirected to a protected variables.
+#### 12/4 
+  * Kyle
+    * Shop now acts as a linked list
+    * Need to finish it up, kind of works, but won't allow you to move around the shop
 # ESE224-Final/MidtermProject
 
 Stony Brook University's ESE 224 Final/Midterm Project
