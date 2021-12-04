@@ -28,6 +28,7 @@
     <ClCompile Include="randomEvents.cpp" />
     <ClCompile Include="scoreboard.cpp" />
     <ClCompile Include="weapon.cpp" />
+    <ClCompile Include="weaponsShop.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="enemy.h" />
@@ -38,6 +39,7 @@
     <ClInclude Include="randomEvents.h" />
     <ClInclude Include="scoreboard.h" />
     <ClInclude Include="Weapon.h" />
+    <ClInclude Include="weaponsShop.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
