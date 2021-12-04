@@ -121,7 +121,7 @@ void weaponsShopv2::addWeapon(weaponNode* weapon) {
         head = current = tail = weapon;
     } else {
         tail->setNext(weapon);
-        tail->getNext()->setPrev(weapon);
+        tail->getNext()->setPrev(tail);
         tail = tail->getNext();
     }
 }
@@ -189,7 +189,7 @@ void weaponsShopv2::deleteAll() {
     free(current);
 }
 
-void weaponsShopv2::purchaseProduct(player& p1) {
+void weaponsShopv2::purchaseProduct(player & p1) {
     char selection;
     if (p1.getBal() < current->getCost()) {
         cout << "Sorry, you can't afford " << current->getItem() << endl;
@@ -249,9 +249,9 @@ shop::shop(player& p1, int floor) {
 void shop::runShop(player& p1) {
     char selection;
     if (!flag) {
+        listOfWeapons.moveToHead();
         while (true) {
             cout << "Your Options: \n";
-            listOfWeapons.moveToHead();
             listOfWeapons.printAll();
             cout << "You currently have " << p1.getBal() << " coins" << endl;
             cout << "0: Exit the shop" 

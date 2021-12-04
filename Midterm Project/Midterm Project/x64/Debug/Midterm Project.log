@@ -1,5 +1,2 @@
-﻿  main.cpp
-D:\Stony Brook University\2 - Sophomore Year\ESE 224\Final Project\ESE224-FinalProject\Midterm Project\Midterm Project\main.cpp(165,16): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-  weaponsShop.cpp
-  Generating Code...
+﻿  weaponsShop.cpp
   Midterm Project.vcxproj -> D:\Stony Brook University\2 - Sophomore Year\ESE 224\Final Project\ESE224-FinalProject\Midterm Project\x64\Debug\Midterm Project.exe
