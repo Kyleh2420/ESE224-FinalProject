@@ -1,4 +1,5 @@
 # Current To Do List
+* Dont need class templates no more LETS GOOOOO
 * Final project time 
 * BUGS 
   * Bugs go here
@@ -125,6 +126,8 @@
   * Kyle
     * Shop now acts as a linked list
     * Need to finish it up, kind of works, but won't allow you to move around the shop
+  * Vincent
+    * did most of task 6 but said no to class template and didnt use operator overloading 
 # ESE224-Final/MidtermProject
 
 Stony Brook University's ESE 224 Final/Midterm Project

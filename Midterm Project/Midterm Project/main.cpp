@@ -27,13 +27,13 @@ stack<string> enemeystack;
 stack<int> enemeystacklevel;
 queue<string> questCompleted;
 
-void addtoenemystack(enemy& e1)
+void addtoenemystack(enemy& e1) //function to add enemy to enemystack
 {
 	enemeystack.push(e1.getName());
 	enemeystacklevel.push(e1.getLvl());
 }
 
-void reverseStacknum(stack<int> &st)
+void reverseStacknum(stack<int> &st) //function to reverse any stack that has numbers
 {
 	int item;
 	stack<int> tmpStack;
@@ -49,7 +49,7 @@ void reverseStacknum(stack<int> &st)
 	return;
 }
 
-void reverseStackname(stack<string>& st)
+void reverseStackname(stack<string>& st) //function to reverse any stack that has strings
 {
 	string item;
 	stack<string> tmpStack;
@@ -65,7 +65,7 @@ void reverseStackname(stack<string>& st)
 	return;
 }
 
-void printenemiesdefeated()
+void printenemiesdefeated() //function to print out stack containing list of defeated enemies
 {
 	reverseStackname(enemeystack);
 	reverseStacknum(enemeystacklevel);
@@ -78,7 +78,7 @@ void printenemiesdefeated()
 	cout << endl;
 }
 
-void printcombatlog()
+void printcombatlog() //function to print combat log 
 {
 	reverseStacknum(combatloghealthstack);
 	reverseStackname(combatlognamestack);
@@ -91,13 +91,13 @@ void printcombatlog()
 	cout << endl;
 }
 
-void addtocombatlogplayer(player& p1)
+void addtocombatlogplayer(player& p1) //function to add player info to combat log stack
 {
 	combatlognamestack.push(" " + p1.getName());
 	combatloghealthstack.push(p1.getHP());
 }
 
-void addtocombatlogenemy(enemy& e1)
+void addtocombatlogenemy(enemy& e1) //function to add enemy info to combat log stack
 {
 	combatlognamestack.push(e1.getName());
 	combatloghealthstack.push(e1.getHP());
@@ -483,13 +483,6 @@ void game(player& p1, scoreboard& p1Scoreboard, fileOperations& files) {
 					cout << "\033[2J\033[1;1H";
 					cout << "A booming voice around you tells \" Congratulations, you have collected enough organs to become a person again! Go enjoy your life\"" << endl;
 					printenemiesdefeated();
-					cout << "PRINT ENEMIES DEFEATED FUNCTION GOES HERE\n";
-					//FUNCTION TO PRINT STACK GOES HERE
-					//FUNCTION TO CLEAR STACK GOES HERE
-					//2. Create an operator overload of the operator<< to print the names and level of all the
-					//enemy objects in the entire stack.
-					//3. Create a function to clear the whole stack.This function should be called at the end of
-					//the program
 				}
 				else {
 					//We clear the screen
