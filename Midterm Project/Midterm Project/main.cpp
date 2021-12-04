@@ -193,6 +193,7 @@ void playerCombat(player& p1, enemy& e1, scoreboard& p1Scoreboard) {
 					tmp = rand() % 100;
 					if (tmp < 60) {
 						cout << "Run Away." << endl;
+						printcombatlog();
 						loop = false;
 					}
 					else {
@@ -280,12 +281,9 @@ void checkQuest(player& p1, scoreboard& p1Scoreboard)
 		if (p1.getWeapon() == "Hand")
 		{
 			questCompleted.push("Don't Need a Weapon");
-<<<<<<< HEAD
 			p1Scoreboard.addBonus(2);//temp value
 			cout << "Congratulations, you've completed (Don't need a weapon). You've earned 2 bonus points!" << endl;
-=======
 			p1Scoreboard.addBonus(2);
->>>>>>> 1bdc4beefef6895477e8afe72b09d9097af74aae
 		}
 		break;
 	case 2:
@@ -293,12 +291,9 @@ void checkQuest(player& p1, scoreboard& p1Scoreboard)
 		if (p1.getBal() >= 10)
 		{
 			questCompleted.push("Money in the Bank");
-<<<<<<< HEAD
 			p1Scoreboard.addBonus(10);//temp value
 			cout << "Congratulations, you've completed (Money in the Bank). You've earned 10 bonus points!" << endl;
-=======
 			p1Scoreboard.addBonus(10);
->>>>>>> 1bdc4beefef6895477e8afe72b09d9097af74aae
 		}
 		break;
 	case 3:
@@ -306,12 +301,9 @@ void checkQuest(player& p1, scoreboard& p1Scoreboard)
 		if (p1.getDMG() > p1.getMaxHP())
 		{
 			questCompleted.push("Glass Cannon");
-<<<<<<< HEAD
 			p1Scoreboard.addBonus(p1.getDMG());//temp value
 			cout << "Congratulations, you've completed (Glass Canon). You've earned "<< p1.getDMG() << " bonus points!" << endl;
-=======
 			p1Scoreboard.addBonus(p1.getDMG());
->>>>>>> 1bdc4beefef6895477e8afe72b09d9097af74aae
 		}
 		break;
 	case 4:
@@ -319,12 +311,9 @@ void checkQuest(player& p1, scoreboard& p1Scoreboard)
 		if ((p1.getHP() / p1.getMaxHP()) >= 0.2)
 		{
 			questCompleted.push("Just a Scratch");
-<<<<<<< HEAD
 			p1Scoreboard.addBonus(p1.getHP());//temp value
 			cout << "Congratulations, you've completed (Glass Canon). You've earned " << p1.getHP() << " bonus points!" << endl;
-=======
 			p1Scoreboard.addBonus(p1.getHP());
->>>>>>> 1bdc4beefef6895477e8afe72b09d9097af74aae
 		}
 		break;
 	default:

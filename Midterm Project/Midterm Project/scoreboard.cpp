@@ -111,7 +111,7 @@ ostream& operator <<(ostream& os, const scoreboard& s) {
             tmp = "I don't know what this difficulty is";
 
     }
-    os << "\nCurrent Score: " << s.sbScore << "\nCurrent Difficulty: " << s.sbDifficulty
+    os << "\nCurrent Score: " << s.sbScore << "\nBonus Score: " << s.sbBonus << "\nCurrent Difficulty: " << s.sbDifficulty
     << "\nFloor Level: " << s.sbFloor << "\nPosition: " << s.sbPos;
     return os;
 }
