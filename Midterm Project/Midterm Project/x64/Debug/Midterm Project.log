@@ -1,15 +1,2 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-﻿  main.cpp
-D:\Stony Brook University\2 - Sophomore Year\ESE 224\Final Project\ESE224-FinalProject\Midterm Project\Midterm Project\main.cpp(171,16): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-  weaponsShop.cpp
-  Generating Code...
-D:\Stony Brook University\2 - Sophomore Year\ESE 224\Final Project\ESE224-FinalProject\Midterm Project\Midterm Project\weaponsShop.cpp(216): warning C4715: 'weaponsShopv2::purchaseProduct': not all control paths return a value
+﻿  weaponsShop.cpp
   Midterm Project.vcxproj -> D:\Stony Brook University\2 - Sophomore Year\ESE 224\Final Project\ESE224-FinalProject\Midterm Project\x64\Debug\Midterm Project.exe
-=======
-﻿  scoreboard.cpp
-  Midterm Project.vcxproj -> C:\Users\d4ng9\Desktop\final\Midterm Project\x64\Debug\Midterm Project.exe
->>>>>>> 82bebc9bb5a5cd6ab675218855a2f893a6bdc3a4
-=======
-﻿  Midterm Project.vcxproj -> C:\Users\vince\source\repos\ESE224-FinalProject\Midterm Project\x64\Debug\Midterm Project.exe
->>>>>>> b1de5fd37b17398947427a9de672b184859fdf11

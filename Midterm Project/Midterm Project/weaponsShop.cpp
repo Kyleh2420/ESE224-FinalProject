@@ -165,16 +165,9 @@ void weaponsShopv2::printAll() {
         <<setw(10) << right << "Item" << endl;
 	
 	while (tmp != NULL) {
-		//Tmp will be equal to the pokemon currently being printed out 
-		//We can get the name of this pokemon with tmp->getName()
-		//If that pokemon is one that we're currently visiting (Labeled by the current pointer)
-		//Then print out an asterisk
-		//Why can't we just compare tmp and current to see if they're the same address?
 		if (tmp->getItem().compare(current->getItem()) == 0)
 			cout << "*";
-		//Print out the information about the pokemon
 		tmp->print();
-		//Move to the next pokemon
 		tmp = tmp->getNext();
 	}
 }
@@ -213,6 +206,7 @@ weaponNode* weaponsShopv2::purchaseProduct(player & p1) {
             cout << "Alright, we won't buy that item" << endl;
         }
     }
+    return NULL;
 }
 //Sets up the shop by reading in a file and creating the doubly linked list required.
 shop::shop(player& p1, int floor) {
@@ -284,7 +278,10 @@ void shop::runShop(player& p1) {
                     listOfWeapons.moveToPrev();
                     break;
                 case 'd':
-                    itemStack.push(listOfWeapons.purchaseProduct(p1));
+                    tmp = listOfWeapons.purchaseProduct(p1);
+                    if (tmp != NULL) {
+                        itemStack.push(tmp);
+                    }
                     break;
                 default:
                     cerr << "That wasn't an option" << endl;

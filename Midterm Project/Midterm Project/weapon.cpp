@@ -102,6 +102,7 @@ int weaponNode::getHP() {
 
 
 void weaponNode::print() {
+    cout << " ";
     if (getDMG() != 0) {
         cout << setw(3) << right <<getCost()
             << setw(9) << right << getDMG() << " Dmg   "
