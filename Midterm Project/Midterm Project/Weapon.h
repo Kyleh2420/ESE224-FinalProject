@@ -29,3 +29,28 @@ public:
 	int getHP();
 };
 
+
+
+//Node for the weapons shop
+class weaponNode {
+    private:
+        string item;
+        int cost, dmg, selection;
+        int maxHP, HP;
+        weaponNode* next;
+        weaponNode* prev;
+    public:
+        weaponNode(string name, int dmg, int cost, int maxHP, int HP);
+        void setNext(weaponNode* next);
+        void setPrev(weaponNode* prev);
+        weaponNode* getNext();
+        weaponNode* getPrev();
+        string getItem();
+        int getDMG();
+        int getCost();
+        int getMaxHP();
+        int getHP();
+		void print();
+};
+
+

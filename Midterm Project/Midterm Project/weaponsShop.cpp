@@ -8,33 +8,10 @@ void weaponsShop::weaponShop(player& p1) {
 	//THis allows for the possiblity of a new weapon's shop on every floor.
 	//Thus, it is highly possible that an item that can be brought at a lower level (With more money than is available)
 	//is more op than one brought at a later leve. Kinda reminds me of SAO
-	vector<weapon> weaponsList;
-	fstream weaponFile;
-	string weaponFileName = "weaponsList.txt", item;
-	int cost, dmg, selection;
-	int maxHP, HP;
-	bool loop = true;
-	char acknowledge;
-	//Open the file, reset back to hand if file cannot be opened.
-	weaponFile.open(weaponFileName);
-	if (weaponFile.fail()) {
-		cerr << "We couldn't open the weapons file. You'll have to stick with your fist" << endl;
-		p1.setWeapon("Hand");
-		p1.setDMG(2);
-		return;
-	}
-
-//Take in the weapon choices from the file to a vector
+	//Take in the weapon choices from the file to a vector
 	//Format is
-	//Damage, cost, string.
-	while (!weaponFile.eof()) {
-		weaponFile >> cost >> dmg >> maxHP >> HP;
-		weaponFile.seekg(1, std::ios_base::cur);
-		getline(weaponFile, item);
-		weaponsList.push_back(weapon(item, dmg, cost, maxHP, HP));
-	}
-
 //This starts the buying process from the user.
+    shopStartup(p1);
 	while (loop) {
 		cout << "Your options:" << endl;
 		cout <<setw(8) << right << "Cost"
@@ -108,4 +85,198 @@ void weaponsShop::weaponShop(player& p1) {
 
 
 	
+}
+
+void weaponsShop::shopStartup(player& p1) {
+//Open the file, reset back to hand if file cannot be opened.
+	weaponFile.open(weaponFileName);
+	if (weaponFile.fail()) {
+		cerr << "We couldn't open the weapons file. You'll have to stick with your fist" << endl;
+		p1.setWeapon("Hand");
+		p1.setDMG(2);
+		return;
+	}
+    //Loads everything into the vectors we have setup.
+	//Damage, cost, string.
+	while (!weaponFile.eof()) {
+		weaponFile >> cost >> dmg >> maxHP >> HP;
+		weaponFile.seekg(1, std::ios_base::cur);
+		getline(weaponFile, item);
+		weaponsList.push_back(weapon(item, dmg, cost, maxHP, HP));
+	}
+}
+
+
+//Below this point is used for weaponShopv2, the second iteration of weaponsShop
+
+
+weaponsShopv2::weaponsShopv2() {
+    head = NULL;
+    tail = NULL;
+    current = NULL;
+}
+
+void weaponsShopv2::addWeapon(weaponNode* weapon) {
+    if (head == NULL) {
+        head = current = tail = weapon;
+    } else {
+        tail->setNext(weapon);
+        tail->getNext()->setPrev(weapon);
+        tail = tail->getNext();
+    }
+}
+
+void weaponsShopv2::moveToNext() {
+    if (current->getNext() == NULL) {
+        cout << "We can't move to the next!" << endl;
+    } else {
+        current = current -> getNext();
+    }
+}
+
+void weaponsShopv2::moveToPrev() {
+    if (current->getPrev() == NULL) {
+        cout << "We can't move to the previous!" << endl;
+    } else {
+        current = current -> getPrev();
+    }
+}
+
+void weaponsShopv2::moveToHead() {
+    current = head;
+}
+
+void weaponsShopv2::moveToTail() {
+    current = tail;
+}
+
+
+void weaponsShopv2::printAll() {
+	//We start from the very very beginning, the head.
+	weaponNode* tmp = head;
+
+	//If the pokenode is still null, then we haven't added any pokemon
+	if (tmp == NULL) {
+		cout << "There are no weapons" << endl;
+		return;
+	}
+	//Loops through the whole thing until tmp is Null (Or rather, when the next one does not exist)
+    cout <<setw(4) << right << "Cost"
+        <<setw(11) << right << "Effect"
+        <<setw(10) << right << "Item" << endl;
+	
+	while (tmp != NULL) {
+		//Tmp will be equal to the pokemon currently being printed out 
+		//We can get the name of this pokemon with tmp->getName()
+		//If that pokemon is one that we're currently visiting (Labeled by the current pointer)
+		//Then print out an asterisk
+		//Why can't we just compare tmp and current to see if they're the same address?
+		if (tmp->getItem().compare(current->getItem()) == 0)
+			cout << "*";
+		//Print out the information about the pokemon
+		tmp->print();
+		//Move to the next pokemon
+		tmp = tmp->getNext();
+	}
+}
+
+void weaponsShopv2::deleteAll() {
+    moveToHead();
+    while (current->getNext() != NULL) {
+        current = current->getNext();
+        free(current->getPrev());
+    }
+    free(current);
+}
+
+void weaponsShopv2::purchaseProduct(player& p1) {
+    char selection;
+    if (p1.getBal() < current->getCost()) {
+        cout << "Sorry, you can't afford " << current->getItem() << endl;
+    } else if (p1.getBal() >= current->getCost()) {
+        cout << "Ready to purcahse " << current->getItem() << "? Your new balance will be "
+            << p1.getBal() - current->getCost() << ". Enter Y/N: ";
+        cin >> selection;
+        selection = tolower(selection);
+        if (selection == 'y') {
+            p1.setDMG(current->getDMG());
+            p1.setWeapon(current->getItem());
+            p1.modBal(-current->getCost());
+            cout << "You brought " << current->getItem() << "!" << endl;
+        } else {
+            cout << "Alright, we won't buy that item" << endl;
+        }
+    }
+}
+//Sets up the shop by reading in a file and creating the doubly linked list required.
+shop::shop(player& p1, int floor) {
+    //According to the floor, will select a different weapons file.
+    switch(floor) {
+        case 0:
+            weaponFileName = "F0Weapons.txt";
+            break;
+        case 1:
+            weaponFileName = "F1Weapons.txt";
+            break;
+        case 2:
+            weaponFileName = "F2Weapons.txt";
+            break;
+        case 3:
+            weaponFileName = "F3Weapons.txt";
+            break;
+        default:
+            cout << "We couldn't find that floor!" << endl;
+    }
+    weaponFile.open(weaponFileName);
+    if (weaponFile.fail()) {
+        cerr << "We couldn't open the weapons file. You'll have to stick with your fist" << endl;
+        flag = true;
+        p1.setWeapon("Hand");
+        p1.setDMG(2);
+        return;
+    }
+
+    while(!weaponFile.eof()) {
+        weaponFile >> cost >> dmg >> maxHP >> HP;
+        weaponFile.seekg(1, std::ios_base::cur);
+        getline(weaponFile, name);
+
+        //Add it to the linked list
+        listOfWeapons.addWeapon(new weaponNode(name, dmg, cost, maxHP, HP));
+    }
+}
+
+void shop::runShop(player& p1) {
+    char selection;
+    if (!flag) {
+        while (true) {
+            cout << "Your Options: \n";
+            listOfWeapons.moveToHead();
+            listOfWeapons.printAll();
+            cout << "You currently have " << p1.getBal() << " coins" << endl;
+            cout << "0: Exit the shop" 
+                << "\n1: Move to next"
+                << "\n2: Move to previous"
+                << "\n3: Purchase the product" << endl;
+            cout << "Your selection: ";
+            cin >> selection;
+            switch (selection) {
+                case '0':
+                    return;
+                case '1':
+                    listOfWeapons.moveToNext();
+                    break;
+                case '2':
+                    listOfWeapons.moveToPrev();
+                    break;
+                case '3':
+                    listOfWeapons.purchaseProduct(p1);
+                    break;
+                default:
+                    cerr << "That wasn't an option" << endl;
+            }
+        }
+    } else {
+       cerr << "There was an error loading the weapons" << endl;
+    }
 }

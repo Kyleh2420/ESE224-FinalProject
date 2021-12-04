@@ -187,7 +187,7 @@ void playerCombat(player& p1, enemy& e1, scoreboard& p1Scoreboard) {
 //2. See the scorboard
 //3. Save and Quit
 void playerOptions(player& p1, fileOperations& files, scoreboard& p1Scoreboard) {
-	weaponsShop shop;
+	shop store(p1, p1Scoreboard.getFloor());
 	char selection;
 	bool loop = true;
 	while (loop) {
@@ -213,7 +213,7 @@ void playerOptions(player& p1, fileOperations& files, scoreboard& p1Scoreboard) 
 		case '3':
 			cout << "\nYou selected 'Enter the shop'" << endl;
 			loop = false;
-			shop.weaponShop(p1);
+			store.runShop(p1);
 			break;
 		case '4':
 			cout << "\nYou selected 'Exit the menu'" << endl;
