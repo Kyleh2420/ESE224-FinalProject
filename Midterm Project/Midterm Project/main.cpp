@@ -275,6 +275,7 @@ void checkQuest(player& p1, scoreboard& p1Scoreboard)
 		{
 			questCompleted.push("Don't Need a Weapon");
 			p1Scoreboard.addBonus(2);//temp value
+			cout << "Congratulations, you've completed (Don't need a weapon). You've earned 2 bonus points!" << endl;
 		}
 		break;
 	case 2:
@@ -282,6 +283,7 @@ void checkQuest(player& p1, scoreboard& p1Scoreboard)
 		{
 			questCompleted.push("Money in the Bank");
 			p1Scoreboard.addBonus(10);//temp value
+			cout << "Congratulations, you've completed (Money in the Bank). You've earned 10 bonus points!" << endl;
 		}
 		break;
 	case 3:
@@ -289,6 +291,7 @@ void checkQuest(player& p1, scoreboard& p1Scoreboard)
 		{
 			questCompleted.push("Glass Cannon");
 			p1Scoreboard.addBonus(p1.getDMG());//temp value
+			cout << "Congratulations, you've completed (Glass Canon). You've earned "<< p1.getDMG() << " bonus points!" << endl;
 		}
 		break;
 	case 4:
@@ -296,6 +299,7 @@ void checkQuest(player& p1, scoreboard& p1Scoreboard)
 		{
 			questCompleted.push("Just a Scratch");
 			p1Scoreboard.addBonus(p1.getHP());//temp value
+			cout << "Congratulations, you've completed (Glass Canon). You've earned " << p1.getHP() << " bonus points!" << endl;
 		}
 		break;
 	default:
