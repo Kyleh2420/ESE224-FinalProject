@@ -350,28 +350,28 @@ void checkQuest(player& p1, scoreboard& p1Scoreboard)
 		if (p1.getWeapon() == "Hand")
 		{
 			questCompleted.push("Don't Need a Weapon");
-			p1Scoreboard.addBonus(1);//temp value
+			p1Scoreboard.addBonus(2);//temp value
 		}
 		break;
 	case 2:
 		if (p1.getBal() == 10)
 		{
 			questCompleted.push("Money in the Bank");
-			p1Scoreboard.addBonus(1);//temp value
+			p1Scoreboard.addBonus(10);//temp value
 		}
 		break;
 	case 3:
 		if (p1.getDMG() > p1.getMaxHP())
 		{
 			questCompleted.push("Glass Cannon");
-			p1Scoreboard.addBonus(1);//temp value
+			p1Scoreboard.addBonus(p1.getDMG());//temp value
 		}
 		break;
 	case 4:
 		if ((p1.getHP() / p1.getMaxHP()) > 0.2)
 		{
 			questCompleted.push("Just a Scratch");
-			p1Scoreboard.addBonus(1);//temp value
+			p1Scoreboard.addBonus(p1.getHP());//temp value
 		}
 		break;
 	default:
