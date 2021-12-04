@@ -1,5 +1,4 @@
 #include "weaponsShop.h"
-#include "stack.h"
 
 /*
 //Here, the user will be able to spend their coins on getting upgraded weapons.
@@ -192,7 +191,7 @@ void weaponsShopv2::deleteAll() {
 
 void weaponsShopv2::purchaseProduct(player & p1) {
     char selection;
-        stack <weaponNodePtr> itemStack;
+        //templateStack <weaponNode> itemStack;
     if (p1.getBal() < current->getCost()) {
         cout << "Sorry, you can't afford " << current->getItem() << endl;
     } else if (p1.getBal() >= current->getCost()) {
@@ -211,7 +210,7 @@ void weaponsShopv2::purchaseProduct(player & p1) {
             }
             p1.modBal(-current->getCost());
             cout << "You brought " << current->getItem() << "!" << endl;
-            itemStack.push(current);
+           // itemStack.push(current&);
         } else {
             cout << "Alright, we won't buy that item" << endl;
         }

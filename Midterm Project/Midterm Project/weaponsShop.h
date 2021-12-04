@@ -2,7 +2,7 @@
 #include <fstream>
 #include <iomanip>
 #include <vector>
-#include "stack.h"
+#include "templateStack.h"
 #ifndef PLAYER
 #define PLAYER
 #include "player.h"

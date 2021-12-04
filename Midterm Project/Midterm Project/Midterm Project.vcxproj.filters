@@ -45,7 +45,7 @@
     <ClCompile Include="weaponsShop.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="stack.cpp">
+    <ClCompile Include="templateStack.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -77,7 +77,7 @@
     <ClInclude Include="weaponsShop.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="stack.h">
+    <ClInclude Include="templateStack.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
