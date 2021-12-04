@@ -320,7 +320,7 @@ void game(player& p1, scoreboard& p1Scoreboard, fileOperations& files) {
 			break;
 		case 3:
 			checkQuest(p1, p1Scoreboard);
-			cout << "Current Side Quest: (JUst a Scratch) Survive with at least 20% HP remaining." << endl;
+			cout << "Current Side Quest: (Just a Scratch) Survive with at least 20% HP remaining." << endl;
 			break;
 		case 4:
 			checkQuest(p1, p1Scoreboard);
