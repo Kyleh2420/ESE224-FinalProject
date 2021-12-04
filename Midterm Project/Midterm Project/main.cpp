@@ -19,9 +19,17 @@ using namespace std;
 
 stack<int> combatloghealthstack;
 stack<string> combatlognamestack;
+stack<string> enemeystack;
+stack<int> enemeystacklevel;
 queue<string> questCompleted;
 
-void reverseStackhp(stack<int> &st)
+void addtoenemystack(enemy& e1)
+{
+	enemeystack.push(e1.getName());
+	enemeystacklevel.push(e1.getLvl());
+}
+
+void reverseStacknum(stack<int> &st)
 {
 	int item;
 	stack<int> tmpStack;
@@ -53,9 +61,22 @@ void reverseStackname(stack<string>& st)
 	return;
 }
 
+void printenemiesdefeated()
+{
+	reverseStackname(enemeystack);
+	reverseStacknum(enemeystacklevel);
+	cout << "Enemies defeated: \n";
+	while (!enemeystack.empty()) {
+		cout << enemeystack.top() << " Level: " << enemeystacklevel.top() << '\n';
+		enemeystack.pop();
+		enemeystacklevel.pop();
+	}
+	cout << endl;
+}
+
 void printcombatlog()
 {
-	reverseStackhp(combatloghealthstack);
+	reverseStacknum(combatloghealthstack);
 	reverseStackname(combatlognamestack);
 	cout << "Combat log: \n";
 	while (!combatloghealthstack.empty()) {
@@ -143,7 +164,7 @@ void playerCombat(player& p1, enemy& e1, scoreboard& p1Scoreboard) {
 					p1Scoreboard.addScore(1);
 					cout << "The enemy has died!"
 						<< "\nYou have earned " << e1.getMaxHP() << " coins." << endl;
-					cout << "FUNCTION TO ADD ENEMIES TO STACK GOES HERE\n";
+					addtoenemystack(e1);
 					//1. Create an insert function to add enemies to the top of the stack.
 					combatlognamestack.push(e1.getName());
 					combatloghealthstack.push(0);
@@ -357,7 +378,7 @@ void game(player& p1, scoreboard& p1Scoreboard, fileOperations& files) {
 							if (p1.getHP() <= 0) {
 								cout << "We're sorry, you have died!" << endl;
 								cout << "The game has now ended, but you can always restart!" << endl;
-								cout << "PRINT ENEMIES DEFEATED FUNCTION GOES HERE\n";
+								printenemiesdefeated();
 								//FUNCTION TO PRINT STACK GOES HERE
 								//FUNCTION TO CLEAR STACK GOES HERE
 								//2. Create an operator overload of the operator<< to print the names and level of all the
@@ -425,6 +446,7 @@ void game(player& p1, scoreboard& p1Scoreboard, fileOperations& files) {
 		if (p1.getHP() <= 0) {
 			if (dead == false) {
 				cout << "We're sorry that the game is over for you. You're more than able go and restart it!" << endl;
+				printenemiesdefeated();
 				cout << "PRINT ENEMIES DEFEATED FUNCTION GOES HERE\n";
 			}
 		}
@@ -444,6 +466,7 @@ void game(player& p1, scoreboard& p1Scoreboard, fileOperations& files) {
 					//We clear the screen
 					cout << "\033[2J\033[1;1H";
 					cout << "A booming voice around you tells \" Congratulations, you have collected enough organs to become a person again! Go enjoy your life\"" << endl;
+					printenemiesdefeated();
 					cout << "PRINT ENEMIES DEFEATED FUNCTION GOES HERE\n";
 					//FUNCTION TO PRINT STACK GOES HERE
 					//FUNCTION TO CLEAR STACK GOES HERE

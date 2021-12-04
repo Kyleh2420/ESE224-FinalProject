@@ -47,8 +47,5 @@ public:
 	//Example Usage: 
 	//cout << enemyName << endl;
 	friend ostream& operator <<(ostream& os, const enemy& e);
-
-	void enemiesdefeated();
-	void printenemiesdefeated();
 };
 
