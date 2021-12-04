@@ -62,35 +62,11 @@ enemy::enemy(string n, int max, int hp, int ad, int lvl) {
 }
 
 //Getters!
-string enemy::getName() {
-    return name;
-}
-int enemy::getMaxHP() {
-    return maxHealth;
-}
-int enemy::getHP() {
-    return healthPoints;
-}
-int enemy::getDMG() {
-    return attackDamage;
-}
 int enemy::getLvl() {
     return level;
 }
 
 //Setters!
-void enemy::setName(string input) {
-    name = input;
-}
-void enemy::setMaxHP(int input) {
-    maxHealth = input;
-}
-void enemy::setHP(int input) {
-    healthPoints = input;
-}
-void enemy::setDMG(int input) {
-    attackDamage = input;
-}
 void enemy::setLvl(int input) {
     level = input;
 }

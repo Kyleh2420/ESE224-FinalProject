@@ -34,23 +34,10 @@ public:
 	enemy(string n, int max, int hp, int ad, int lvl);
 
 	//Getters!
-	//Returns the [string] name of the enemy
-	string getName();
-	//Returns the [int] maxHP of the enemy
-	int getMaxHP();
-	//Returns the [int] current hp of the enemy
-	int getHP();
-	//Returns the [int] current damage of the enemy.
-	//Once multiplied with the current leve, gets you the actaul damage of the enemy
-	int getDMG();
 	//Returns the [int] current level of the enemy
 	int getLvl();
 
 	//Setters!
-	void setName(string input);
-	void setMaxHP(int input);
-	void setHP(int input);
-	void setDMG(int input);
 	void setLvl(int input);
 
 	//Modifiers!
