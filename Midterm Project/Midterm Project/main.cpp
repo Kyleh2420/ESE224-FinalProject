@@ -429,6 +429,7 @@ void game(player& p1, scoreboard& p1Scoreboard, fileOperations& files) {
 		if (p1.getHP() <= 0) {
 			if (dead == false) {
 				cout << "We're sorry that the game is over for you. You're more than able go and restart it!" << endl;
+				cout << "PRINT ENEMIES DEFEATED FUNCTION GOES HERE\n";
 			}
 		}
 		else {
