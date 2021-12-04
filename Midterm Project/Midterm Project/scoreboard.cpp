@@ -4,6 +4,7 @@ scoreboard::scoreboard() {
     sbScore = 0;
     sbDifficulty = 1;
     sbFloor = 0;
+    sbBonus = 0;
     sbPos = 0;
     sbName = " ";
 }
@@ -44,7 +45,7 @@ int scoreboard::getBonus() {
     return sbBonus;
 }
 int scoreboard::getTotal() {
-    return getScore() + getBonus();
+    return (getScore() + getBonus());
 }
 
 string scoreboard::getName() {
