@@ -116,7 +116,11 @@
      *  added new bonus score to scoreboard
      *  DERRICK: make sure when getting the scores for the scoreboard youre using getTotal() instead of getScore()!!!
      *  Everything should work...... i think
-
+    * Kyle
+      * Spun off Weapons shop into it's own class. The point of this is to create a linkedlist type thing (Recall the pokedex lab)
+      * I will turn weapon into a node type thing, and weapons list is the manager. (Not Done)
+      * Didn't want to clog up main.cpp with the manager files and stuff. (Not Done)
+      * Enemy now extends player. Player's private variables redirected to a protected variables.
 # ESE224-Final/MidtermProject
 
 Stony Brook University's ESE 224 Final/Midterm Project
