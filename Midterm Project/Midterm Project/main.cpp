@@ -1,10 +1,14 @@
- #include "enemy.h"
+#include "enemy.h"
 #include "fileOperations.h"
 #include "Weapon.h"
 #include "floor.h"
 #include "randomEvents.h"
 #include "randomComment.h"
 #include "weaponsShop.h"
+#ifndef TEMPLATESTACK
+#define TEMPLATESTACK
+#include "templateStack.h"
+#endif
 #include <string>
 #include <vector>
 #include <iomanip>

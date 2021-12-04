@@ -1,5 +1,4 @@
 #include "weaponsShop.h"
-
 /*
 //Here, the user will be able to spend their coins on getting upgraded weapons.
 //This code uses a vector with the class Weapon to store all the information read from the file
@@ -166,16 +165,9 @@ void weaponsShopv2::printAll() {
         <<setw(10) << right << "Item" << endl;
 	
 	while (tmp != NULL) {
-		//Tmp will be equal to the pokemon currently being printed out 
-		//We can get the name of this pokemon with tmp->getName()
-		//If that pokemon is one that we're currently visiting (Labeled by the current pointer)
-		//Then print out an asterisk
-		//Why can't we just compare tmp and current to see if they're the same address?
 		if (tmp->getItem().compare(current->getItem()) == 0)
 			cout << "*";
-		//Print out the information about the pokemon
 		tmp->print();
-		//Move to the next pokemon
 		tmp = tmp->getNext();
 	}
 }
@@ -189,9 +181,8 @@ void weaponsShopv2::deleteAll() {
     free(current);
 }
 
-void weaponsShopv2::purchaseProduct(player & p1) {
+weaponNode* weaponsShopv2::purchaseProduct(player & p1) {
     char selection;
-        //templateStack <weaponNode> itemStack;
     if (p1.getBal() < current->getCost()) {
         cout << "Sorry, you can't afford " << current->getItem() << endl;
     } else if (p1.getBal() >= current->getCost()) {
@@ -210,11 +201,12 @@ void weaponsShopv2::purchaseProduct(player & p1) {
             }
             p1.modBal(-current->getCost());
             cout << "You brought " << current->getItem() << "!" << endl;
-           // itemStack.push(current&);
+            return current;
         } else {
             cout << "Alright, we won't buy that item" << endl;
         }
     }
+    return NULL;
 }
 //Sets up the shop by reading in a file and creating the doubly linked list required.
 shop::shop(player& p1, int floor) {
@@ -271,6 +263,13 @@ void shop::runShop(player& p1) {
             selection = tolower(selection);
             switch (selection) {
                 case 'a':
+                    while (!itemStack.empty()) {
+                        tmp = itemStack.top();
+                        itemStack.pop();
+
+                        cout << "You purchased: ";
+                        tmp->print();
+                    }
                     return;
                 case 's':
                     listOfWeapons.moveToNext();
@@ -279,7 +278,10 @@ void shop::runShop(player& p1) {
                     listOfWeapons.moveToPrev();
                     break;
                 case 'd':
-                    listOfWeapons.purchaseProduct(p1);
+                    tmp = listOfWeapons.purchaseProduct(p1);
+                    if (tmp != NULL) {
+                        itemStack.push(tmp);
+                    }
                     break;
                 default:
                     cerr << "That wasn't an option" << endl;
