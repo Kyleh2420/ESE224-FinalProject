@@ -15,6 +15,8 @@ class scoreboard {
         int sbPos;
         //Bonus points for side quests
         int sbBonus;
+
+        string sbName;
     public:
         //Default constructor
         scoreboard();
@@ -25,6 +27,7 @@ class scoreboard {
         void setFloor(int input);
         void setPos(int input);
         void setBonus(int input);
+        void setName(string input);
 
         //Getters!
         int getScore();
@@ -33,6 +36,7 @@ class scoreboard {
         int getPos();
         int getBonus();
         int getTotal();
+        string getName();
 
         void addScore(int input);
         void addBonus(int input);

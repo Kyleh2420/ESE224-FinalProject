@@ -5,6 +5,7 @@ scoreboard::scoreboard() {
     sbDifficulty = 1;
     sbFloor = 0;
     sbPos = 0;
+    sbName = " ";
 }
 
 void scoreboard::setScore(int input) {
@@ -21,6 +22,10 @@ void scoreboard::setPos(int input) {
 }
 void scoreboard::setBonus(int input) {
     sbBonus = input;
+}
+
+void scoreboard::setName(string input) {
+    sbName = input;
 }
 
 int scoreboard::getScore() {
@@ -40,6 +45,10 @@ int scoreboard::getBonus() {
 }
 int scoreboard::getTotal() {
     return getScore() + getBonus();
+}
+
+string scoreboard::getName() {
+    return sbName;
 }
 
 void scoreboard::addScore(int input) {

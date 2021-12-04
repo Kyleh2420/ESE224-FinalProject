@@ -10,6 +10,8 @@
 #include <iomanip>
 #include <stack>
 #include <queue>
+#include<list>
+fstream myFile;
 //scoreboard.h don't need to be called, since they are already called in fileOperations.h
 // player.h is called in enemy.h
 //If called again, it will result in a redefinition error
@@ -502,6 +504,99 @@ void alphabeticalScore(fileOperations& files, player& p1, scoreboard& p1Scoreboa
 			 << "Score: " << setw(10) << left << scores[i] << endl;
 	}
 }
+
+//Create a function to read the scoreboard file and to then create scoreboard objects for
+//each player score in the scoreboard file.This function should load all the objects into a
+//list.
+void scoreboardList(std::list<scoreboard>& list) {
+	//Read Scored Board
+	myFile.open("scoreboard.txt", ios::in);
+	if (myFile.fail()) {
+		cerr << "Error saving the file! Please try again7!" << endl;
+		exit(1);
+	}
+	vector<string> names;
+	vector<string> scores;
+	while (myFile) {
+		string label;
+		string name;
+		string score;
+
+		myFile >> label;
+		if (myFile.eof())
+			break;
+		myFile >> name;
+		names.push_back(name);
+		myFile >> label;
+		myFile >> score;
+		scores.push_back(score);
+	}
+	//Create Objects for each score and plasce into list
+	for (int i = 0; i < names.size(); i++) {
+		scoreboard p1Scoreboard;
+		p1Scoreboard.setName(names[i]);
+		int x = stoi(scores[i]);
+		p1Scoreboard.setScore(x);
+		list.push_back(p1Scoreboard);
+	}
+}
+
+//Create a function to ask the user for a nameand to then search for that name in the list.
+//All players with that name should be outputted with their scores to the console screen.
+//Use any search method that you prefer.
+void askName(std::list<scoreboard>& list) {
+	cout << "\n Enter a name to search for in the Scoreboard (Note: case Sensitive: ";
+	string name;
+	cin >> name;
+
+	for (auto v : list) {
+		if (name.compare(v.getName()) == 0) {
+			cout << "Name: " << setw(16) << left << v.getName()
+				<< "Score: " << setw(10) << left << v.getScore() << "\n";
+		}
+	}
+}
+
+/*Create a new list for averaged scores from the scoreboard.
+Create a function to search the whole scoreboard list created previously for any names that
+repeat.If any names repeat, then take the average of all the scores.Then add this averaged
+score to the new scoreboard.
+Insert the averaged score into the proper place, so that the list is sorted already from highest to
+lowest.If a name doesn’t repeat, then also add that score to the list as well.*/
+void averageScoreboad(std::list<scoreboard>& list, std::list<scoreboard>& newlist) {
+	int sum = 0;
+	int count = 0;
+	int average;
+	string name;
+
+	while (!list.empty()) {
+		name = list.front().getName();
+		for (auto v : list) {
+			if (name.compare(v.getName()) == 0) {
+				sum += v.getScore();
+				count++;
+				list.remove(v);
+			}
+		}
+		average = sum / count;
+		scoreboard p1Scoreboard;
+		p1Scoreboard.setScore(average);
+		p1Scoreboard.setName(name);
+		if (newlist.empty()) {
+			newlist.push_back(p1Scoreboard);
+		}
+		else {
+			bool added = false;
+			std::list<scoreboard>::iterator it;
+			for (it = newlist.begin(); it != newlist.end(); it++) {
+				if (average > it->getScore()) {
+					newlist.insert(it, p1Scoreboard);
+				}
+			}
+		}
+	}
+}
+
 
 //should maybe keep the main program and then make another bigger menu program for all the menu stuff that has the scoreboard, search by name, enter game, quit, etc
 int main() {

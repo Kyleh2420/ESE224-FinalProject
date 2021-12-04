@@ -1,2 +1,40 @@
-﻿  weaponsShop.cpp
-  Midterm Project.vcxproj -> D:\Stony Brook University\2 - Sophomore Year\ESE 224\Final Project\ESE224-FinalProject\Midterm Project\x64\Debug\Midterm Project.exe
+﻿  enemy.cpp
+C:\Users\derri\source\repos\ESE224-FinalProject2\Midterm Project\Midterm Project\enemy.cpp(114,15): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+  fileOperations.cpp
+  floor.cpp
+C:\Users\derri\source\repos\ESE224-FinalProject2\Midterm Project\Midterm Project\floor.cpp(41,19): warning C4244: 'initializing': conversion from '_Rep' to 'unsigned int', possible loss of data
+          with
+          [
+              _Rep=std::chrono::system_clock::rep
+          ]
+  main.cpp
+C:\Users\derri\source\repos\ESE224-FinalProject2\Midterm Project\Midterm Project\main.cpp(167,16): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\include\list(1603,65): error C2676: binary '==': 'const _Ty' does not define this operator or a conversion to a type acceptable to the predefined operator
+          with
+          [
+              _Ty=scoreboard
+          ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\include\list(1602): message : while compiling class template member function 'auto std::list<scoreboard,std::allocator<scoreboard>>::remove(const _Ty &)'
+          with
+          [
+              _Ty=scoreboard
+          ]
+C:\Users\derri\source\repos\ESE224-FinalProject2\Midterm Project\Midterm Project\main.cpp(540): message : see reference to class template instantiation 'std::list<scoreboard,std::allocator<scoreboard>>' being compiled
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\include\list(1614,1): error C2451: a conditional expression of type 'void' is not valid
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\include\list(1614,22): message : Expressions of type void cannot be converted to other types
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\include\list(1603): message : see reference to function template instantiation 'auto std::list<scoreboard,std::allocator<scoreboard>>::remove_if<std::list<scoreboard,std::allocator<scoreboard>>::remove::<lambda_db5085a06be7815f26cdb22374374d87>>(_Pr1)' being compiled
+          with
+          [
+              _Pr1=std::list<scoreboard,std::allocator<scoreboard>>::remove::<lambda_db5085a06be7815f26cdb22374374d87>
+          ]
+  player.cpp
+  randomComment.cpp
+C:\Users\derri\source\repos\ESE224-FinalProject2\Midterm Project\Midterm Project\randomComment.cpp(16,21): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\derri\source\repos\ESE224-FinalProject2\Midterm Project\Midterm Project\randomComment.cpp(85,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+  randomEvents.cpp
+C:\Users\derri\source\repos\ESE224-FinalProject2\Midterm Project\Midterm Project\randomEvents.cpp(20,21): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\derri\source\repos\ESE224-FinalProject2\Midterm Project\Midterm Project\randomEvents.cpp(96,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+  scoreboard.cpp
+  weapon.cpp
+  weaponsShop.cpp
+  Generating Code...
