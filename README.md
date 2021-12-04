@@ -127,7 +127,8 @@
     * Shop now acts as a linked list
     * Need to finish it up, kind of works, but won't allow you to move around the shop
   * Vincent
-    * did most of task 6 but said no to class template and didnt use operator overloading 
+    * did most of task 6 but said no to class template and didnt use operator overloading
+    * Added sections for documentation for all the tasks 
 # ESE224-Final/MidtermProject
 
 Stony Brook University's ESE 224 Final/Midterm Project
