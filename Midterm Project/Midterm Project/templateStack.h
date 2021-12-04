@@ -14,5 +14,4 @@ template <class T> class templateStack {
         T peek();
         bool isFull();
         bool isEmpty();
-
 };

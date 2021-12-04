@@ -2,11 +2,15 @@
 #include <fstream>
 #include <iomanip>
 #include <vector>
-#include "templateStack.h"
+#include <stack>
 #ifndef PLAYER
 #define PLAYER
 #include "player.h"
+#endif
 #include "weapon.h"
+#ifndef TEMPLATESTACK
+#define TEMPLATESTACK
+#include "templateStack.h"
 #endif
 /*
 //The weapons shop handler
@@ -45,7 +49,7 @@ class weaponsShopv2 {
         weaponNode* getCurrent();
 		void deleteAll();
 
-        void purchaseProduct(player& p1);
+        weaponNode* purchaseProduct(player& p1);
 };
 
 //THe driver class for the weaponsShopv2 class
@@ -57,7 +61,8 @@ class shop {
     //Flag will go true if the file could not be opened
     bool flag = false;
 
-
+    weaponNode* tmp;
+    stack <weaponNode*> itemStack;
     //Tmp vars to be loaded in
     int cost=0, dmg=0;
     int maxHP=0, HP=0;

@@ -5,7 +5,7 @@ template<class T> templateStack<T>::templateStack() {
     top = -1;
 }
 
-template <class T> void templateStack<T>:: push (T k) {
+template <class T> void templateStack<T>::push (T k) {
     if (isFull()) {
         cout << "Stack is full" << endl;
     }

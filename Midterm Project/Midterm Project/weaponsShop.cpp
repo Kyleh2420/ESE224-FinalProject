@@ -1,5 +1,4 @@
 #include "weaponsShop.h"
-
 /*
 //Here, the user will be able to spend their coins on getting upgraded weapons.
 //This code uses a vector with the class Weapon to store all the information read from the file
@@ -189,9 +188,8 @@ void weaponsShopv2::deleteAll() {
     free(current);
 }
 
-void weaponsShopv2::purchaseProduct(player & p1) {
+weaponNode* weaponsShopv2::purchaseProduct(player & p1) {
     char selection;
-        //templateStack <weaponNode> itemStack;
     if (p1.getBal() < current->getCost()) {
         cout << "Sorry, you can't afford " << current->getItem() << endl;
     } else if (p1.getBal() >= current->getCost()) {
@@ -210,7 +208,7 @@ void weaponsShopv2::purchaseProduct(player & p1) {
             }
             p1.modBal(-current->getCost());
             cout << "You brought " << current->getItem() << "!" << endl;
-           // itemStack.push(current&);
+            return current;
         } else {
             cout << "Alright, we won't buy that item" << endl;
         }
@@ -271,6 +269,13 @@ void shop::runShop(player& p1) {
             selection = tolower(selection);
             switch (selection) {
                 case 'a':
+                    while (!itemStack.empty()) {
+                        tmp = itemStack.top();
+                        itemStack.pop();
+
+                        cout << "You purchased: ";
+                        tmp->print();
+                    }
                     return;
                 case 's':
                     listOfWeapons.moveToNext();
@@ -279,7 +284,7 @@ void shop::runShop(player& p1) {
                     listOfWeapons.moveToPrev();
                     break;
                 case 'd':
-                    listOfWeapons.purchaseProduct(p1);
+                    itemStack.push(listOfWeapons.purchaseProduct(p1));
                     break;
                 default:
                     cerr << "That wasn't an option" << endl;
