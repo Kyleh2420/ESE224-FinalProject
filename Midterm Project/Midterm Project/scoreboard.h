@@ -38,6 +38,8 @@ class scoreboard {
         int getTotal();
         string getName();
 
+        bool operator == (const scoreboard& s) const;
+
         void addScore(int input);
         void addBonus(int input);
 
