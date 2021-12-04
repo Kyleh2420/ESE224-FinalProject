@@ -268,38 +268,63 @@ void playerOptions(player& p1, fileOperations& files, scoreboard& p1Scoreboard) 
 
 void checkQuest(player& p1, scoreboard& p1Scoreboard)
 {
+	//This function runs at the start of each floor.
+	//Checks the quest completion of the previous floor and pushes the name into the queue.
+	//Adds bonus points to the players score.
+	//For the last 2 side quests, the bonus points are dependant on how well the player did to pass the quest
 	switch (p1Scoreboard.getFloor())
 	{
+		//Floor 0 doenst get a case b/c floor 0 is the first level the player completes meaning there was no side quest before it.
 	case 1:
+		//Floor 0 requires the player to beat the floor wihtout buying a weapon from the shop.
 		if (p1.getWeapon() == "Hand")
 		{
 			questCompleted.push("Don't Need a Weapon");
+<<<<<<< HEAD
 			p1Scoreboard.addBonus(2);//temp value
 			cout << "Congratulations, you've completed (Don't need a weapon). You've earned 2 bonus points!" << endl;
+=======
+			p1Scoreboard.addBonus(2);
+>>>>>>> 1bdc4beefef6895477e8afe72b09d9097af74aae
 		}
 		break;
 	case 2:
-		if (p1.getBal() == 10)
+		//Floor 1 requires the player to beat the level with at least 10 coins in their balance
+		if (p1.getBal() >= 10)
 		{
 			questCompleted.push("Money in the Bank");
+<<<<<<< HEAD
 			p1Scoreboard.addBonus(10);//temp value
 			cout << "Congratulations, you've completed (Money in the Bank). You've earned 10 bonus points!" << endl;
+=======
+			p1Scoreboard.addBonus(10);
+>>>>>>> 1bdc4beefef6895477e8afe72b09d9097af74aae
 		}
 		break;
 	case 3:
+		//Floor 2 rrquires the player to beat the level with their damage higher than their max hp
 		if (p1.getDMG() > p1.getMaxHP())
 		{
 			questCompleted.push("Glass Cannon");
+<<<<<<< HEAD
 			p1Scoreboard.addBonus(p1.getDMG());//temp value
 			cout << "Congratulations, you've completed (Glass Canon). You've earned "<< p1.getDMG() << " bonus points!" << endl;
+=======
+			p1Scoreboard.addBonus(p1.getDMG());
+>>>>>>> 1bdc4beefef6895477e8afe72b09d9097af74aae
 		}
 		break;
 	case 4:
-		if ((p1.getHP() / p1.getMaxHP()) > 0.2)
+		//Floor 3 requires the player to beat the level with at least 20% of their mac hp remaining
+		if ((p1.getHP() / p1.getMaxHP()) >= 0.2)
 		{
 			questCompleted.push("Just a Scratch");
+<<<<<<< HEAD
 			p1Scoreboard.addBonus(p1.getHP());//temp value
 			cout << "Congratulations, you've completed (Glass Canon). You've earned " << p1.getHP() << " bonus points!" << endl;
+=======
+			p1Scoreboard.addBonus(p1.getHP());
+>>>>>>> 1bdc4beefef6895477e8afe72b09d9097af74aae
 		}
 		break;
 	default:
@@ -334,6 +359,9 @@ void game(player& p1, scoreboard& p1Scoreboard, fileOperations& files) {
 		randomComment quirkyComment(p1Scoreboard.getFloor());
 		//Primes the random event selector with the selector
 		cout << "The current floor is: " << p1Scoreboard.getFloor() << endl;
+
+		//The following switch statment tells the user what side quest they have depending on what floor they are on.
+		//It also checks if the previous floor's side quest was completed
 		switch (p1Scoreboard.getFloor())
 		{
 		case 0:
