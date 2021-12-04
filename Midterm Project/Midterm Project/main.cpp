@@ -9,7 +9,8 @@
 #include <iomanip>
 #include <stack>
 #include <queue>
-//player.h and scoreboard.h don't need to be called, since they are already called in fileOperations.h
+//scoreboard.h don't need to be called, since they are already called in fileOperations.h
+// player.h is called in enemy.h
 //If called again, it will result in a redefinition error
 using namespace std;
 

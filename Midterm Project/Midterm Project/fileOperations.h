@@ -1,10 +1,15 @@
+#pragma once
 #include <iostream>
 #include <iomanip>
 #include <string>
 #include <fstream>
 #include "scoreboard.h"
-#include "player.h"
 #include <vector>
+
+#ifndef PLAYER
+#define PLAYER
+#include "player.h"
+#endif
 using namespace std;
 
 class fileOperations {

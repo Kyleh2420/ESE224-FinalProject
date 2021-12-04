@@ -1,19 +1,17 @@
+#pragma once
 #include <iostream>
 #include <string>
 #include <vector>
 #include <fstream>
+
+#ifndef PLAYER
+#define PLAYER
+#include "player.h"
+#endif
 using namespace std;
 
-class enemy {
+class enemy : public player{
 private:
-	//Enemys name
-	string name;
-	//Enemys max HP
-	int maxHealth;
-	//Enemys HP
-	int healthPoints;
-	//Enemys AD. Multiplied by the level gets you the actual enemys damage
-	int attackDamage;
 	//Enemys level. Each level increase should increase their stats
 	int level = 0;
 

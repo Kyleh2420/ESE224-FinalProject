@@ -3,7 +3,7 @@
 using namespace std;
 
 class player {
-private:
+protected:
 	//Player Name
 	string name;
 	//Max hp of player
