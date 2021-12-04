@@ -199,8 +199,14 @@ void weaponsShopv2::purchaseProduct(player & p1) {
         cin >> selection;
         selection = tolower(selection);
         if (selection == 'y') {
-            p1.setDMG(current->getDMG());
-            p1.setWeapon(current->getItem());
+            //If the damage is 0, then it is a potion
+            if (current->getDMG() == 0) {
+                p1.modHealth(current->getHP());
+                p1.modMaxHP(current->getMaxHP());
+            } else {
+                p1.setDMG(current->getDMG());
+                p1.setWeapon(current->getItem());
+            }
             p1.modBal(-current->getCost());
             cout << "You brought " << current->getItem() << "!" << endl;
         } else {
@@ -254,22 +260,23 @@ void shop::runShop(player& p1) {
             cout << "Your Options: \n";
             listOfWeapons.printAll();
             cout << "You currently have " << p1.getBal() << " coins" << endl;
-            cout << "0: Exit the shop" 
-                << "\n1: Move to next"
-                << "\n2: Move to previous"
-                << "\n3: Purchase the product" << endl;
+            cout << "A: Exit the shop" 
+                << "\nS: Move to next"
+                << "\nW: Move to previous"
+                << "\nD: Purchase the product" << endl;
             cout << "Your selection: ";
             cin >> selection;
+            selection = tolower(selection);
             switch (selection) {
-                case '0':
+                case 'a':
                     return;
-                case '1':
+                case 's':
                     listOfWeapons.moveToNext();
                     break;
-                case '2':
+                case 'w':
                     listOfWeapons.moveToPrev();
                     break;
-                case '3':
+                case 'd':
                     listOfWeapons.purchaseProduct(p1);
                     break;
                 default:
