@@ -43,6 +43,9 @@
     <ClInclude Include="Weapon.h" />
     <ClInclude Include="weaponsShop.h" />
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="scoreboard.txt" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
