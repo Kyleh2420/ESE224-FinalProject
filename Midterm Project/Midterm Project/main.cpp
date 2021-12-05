@@ -647,23 +647,32 @@ void averageScoreboard(std::list<scoreboard>& list1, std::list<scoreboard>& newl
 			}
 		}
 		average = sum / count;
+		sum = 0;
+		count = 0;
 		scoreboard p1Scoreboard;
 		p1Scoreboard.setScore(average);
 		p1Scoreboard.setName(name);
+		bool added = false;
 		if (newlist.empty()) {
 			newlist.push_back(p1Scoreboard);
+			added = true;
 		}
 		else {
-			bool added = false;
+
 			std::list<scoreboard>::iterator it;
 			for (it = newlist.begin(); it != newlist.end(); it++) {
-				if (average > it->getScore()) {
+				if (average < it->getScore()) {
 					newlist.insert(it, p1Scoreboard);
+					added = true;
 				}
 			}
 		}
+		if (!added) {
+			newlist.push_back(p1Scoreboard);
+		}
 	}
 }
+
 
 
 //should maybe keep the main program and then make another bigger menu program for all the menu stuff that has the scoreboard, search by name, enter game, quit, etc

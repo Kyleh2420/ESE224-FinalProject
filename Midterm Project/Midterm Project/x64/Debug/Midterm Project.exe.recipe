@@ -2,7 +2,11 @@
 <Project>
   <ProjectOutputs>
     <ProjectOutput>
+<<<<<<< HEAD
       <FullPath>D:\Stony Brook University\2 - Sophomore Year\ESE 224\Final Project\ESE224-FinalProject\Midterm Project\x64\Debug\Midterm Project.exe</FullPath>
+=======
+      <FullPath>C:\Users\derri\Source\Repos\ESE224-FinalProject4\Midterm Project\x64\Debug\Midterm Project.exe</FullPath>
+>>>>>>> ac99235535bf87a73d838d398bc225773f12de97
     </ProjectOutput>
   </ProjectOutputs>
   <ContentFiles />
