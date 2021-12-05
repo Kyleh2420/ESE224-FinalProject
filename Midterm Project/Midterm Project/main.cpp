@@ -581,7 +581,6 @@ void scoreboardList(std::list<scoreboard>& list) {
 		list.push_back(p1Scoreboard);
 	}
 }
-
 //Create a function to ask the user for a nameand to then search for that name in the list.
 //All players with that name should be outputted with their scores to the console screen.
 //Use any search method that you prefer.
@@ -589,13 +588,19 @@ void askName(std::list<scoreboard>& list) {
 	cout << "\n Enter a name to search for in the Scoreboard (Note: case Sensitive: ";
 	string name;
 	cin >> name;
+	bool nameFound = false;
 
 	for (auto v : list) {
 		if (name.compare(v.getName()) == 0) {
+			nameFound = true;
 			cout << "Name: " << setw(16) << left << v.getName()
 				<< "Score: " << setw(10) << left << v.getScore() << "\n";
 		}
 	}
+	if (!nameFound) {
+		cout << "Name not found.\n";
+	}
+
 }
 
 /*Create a new list for averaged scores from the scoreboard.
@@ -604,19 +609,20 @@ repeat.If any names repeat, then take the average of all the scores.Then add thi
 score to the new scoreboard.
 Insert the averaged score into the proper place, so that the list is sorted already from highest to
 lowest.If a name doesn�t repeat, then also add that score to the list as well.*/
-void averageScoreboad(std::list<scoreboard>& list, std::list<scoreboard>& newlist) {
+void averageScoreboard(std::list<scoreboard>& list1, std::list<scoreboard>& newlist) {
 	int sum = 0;
 	int count = 0;
 	int average;
 	string name;
+	list <scoreboard> temp = list1;
 
-	while (!list.empty()) {
-		name = list.front().getName();
-		for (auto v : list) {
+	while (!temp.empty()) {
+		name = temp.front().getName();
+		for (auto v : list1) {
 			if (name.compare(v.getName()) == 0) {
 				sum += v.getScore();
 				count++;
-				list.remove(v);
+				temp.remove(v);
 			}
 		}
 		average = sum / count;
@@ -645,6 +651,28 @@ int main() {
 	scoreboard p1Scoreboard;
 	fileOperations files;
 
+	list <scoreboard> list1;
+	scoreboardList(list1);
+
+	//Ask for a name
+	askName(list1);
+
+	list1.sort();
+	for (auto v : list1) {
+		cout << "Name: " << setw(16) << left << v.getName()
+			<< "Score: " << setw(10) << left << v.getScore() << "\n";
+	}
+
+
+
+	//Average score board
+	list <scoreboard> avg;
+	averageScoreboard(list1, avg);
+	cout << "Average: \n";
+	for (auto v : avg) {
+		cout << "Name: " << setw(16) << left << v.getName()
+			<< "Score: " << setw(10) << left << v.getScore() << "\n";
+	}
 	//The following will loop through the player's starting options 
 	//The User will select whether or not a new file is created or loaded.
 	//If a new file is created, it will Ask for the players name and difficulty, then save those to 

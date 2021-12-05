@@ -56,6 +56,10 @@ bool scoreboard::operator == (const scoreboard& s) const {
     return sbScore == s.sbScore && sbDifficulty == s.sbDifficulty &&
    sbFloor == s.sbFloor && sbPos == s.sbPos && sbBonus == s.sbBonus && sbName == s.sbName; }
 
+bool scoreboard::operator < (const scoreboard& s) const {
+    return sbScore < s.sbScore;
+}
+
 void scoreboard::addScore(int input) {
     sbScore += input;
     string tmp;
