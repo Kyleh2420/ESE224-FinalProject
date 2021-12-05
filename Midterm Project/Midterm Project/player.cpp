@@ -10,6 +10,15 @@ player::player() {
     balance = 0;
 }
 
+player::player(string iname, int igetMaxHP, int igetHP, int igetDMG, int igetBal, string iweapon) {
+    name = iname;
+    maxHealth = igetMaxHP;
+    healthPoints = igetHP;
+    attackDamage = igetDMG;
+    weaponName = iweapon;
+    balance = igetBal;
+}
+
 //Getters
 string player::getName() {
     return name;

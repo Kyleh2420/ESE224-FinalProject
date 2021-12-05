@@ -136,7 +136,7 @@ bool enemyCombat(enemy& e1, player& p1, scoreboard& p1Scoreboard) {
 //1. The player Runs away
 //2. The player runs out of HP
 //3. The enemy runs out of hp
-void playerCombat(player& p1, enemy& e1, scoreboard& p1Scoreboard) {
+void playerCombat(player& p1, enemy e1, scoreboard& p1Scoreboard) {
 	bool loop = true;
 	int tmp(-1);
 	char selection;
@@ -399,7 +399,8 @@ void game(player& p1, scoreboard& p1Scoreboard, fileOperations& files) {
 					// 		//a preset list. 
 					// 		//Ex: Fl1Enemies.txt and Fl1Weapons.txt both contain info about what is available on each floor	
 							enemy e1(p1Scoreboard.getFloor());
-					 		playerCombat(p1, e1, p1Scoreboard);
+
+					 		playerCombat(p1, playGame.getCurrentEnemy(), p1Scoreboard);
 							if (p1.getHP() <= 0) {
 								cout << "We're sorry, you have died!" << endl;
 								cout << "The game has now ended, but you can always restart!" << endl;
@@ -413,6 +414,7 @@ void game(player& p1, scoreboard& p1Scoreboard, fileOperations& files) {
 								loop = false;
 								dead = true;
 							}
+							//enemyList.pop();
 					 		break;
 						}//These brackets are here to ger around the 
 						 //"Transfer of control bypasses intitalization of variable e1"

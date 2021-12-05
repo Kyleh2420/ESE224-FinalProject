@@ -1,4 +1,6 @@
 #include <vector>
+#include "enemy.h"
+#include <queue>
 using namespace std;
 
 
@@ -23,6 +25,7 @@ class gameFloor {
                                     {8, 7},
                                     {9,5}};
 
+        queue<enemy> enemyList;
     public:
         //Default constructor
         //Accepts floor level as an input, sets up and creates the floor.
@@ -36,4 +39,6 @@ class gameFloor {
         int getTotalPos();
         //Will return the random occurance (If any) set to occur
         int getRandomEvent();
+
+        enemy getCurrentEnemy();
 };

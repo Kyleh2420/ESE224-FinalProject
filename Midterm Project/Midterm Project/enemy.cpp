@@ -114,3 +114,7 @@ void enemy::randomizeSelector() {
     srand(time(0));
     selector = rand() % listOfNames.size();
 }
+
+enemy::enemy (const enemy&) {
+
+}

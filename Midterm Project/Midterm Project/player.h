@@ -19,6 +19,7 @@ protected:
 public:
 	//Default Constructor
 	player();
+	player(string iname, int igetMaxHP, int igetHP, int igetDMG, int igetBal, string iweapon);
 
 	//Getters!
 	string getName();
