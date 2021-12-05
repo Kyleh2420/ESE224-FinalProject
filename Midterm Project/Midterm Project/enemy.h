@@ -13,7 +13,7 @@ using namespace std;
 class enemy : public player{
 private:
 	//Enemys level. Each level increase should increase their stats
-	int level = 0;
+	//int level = 0;
 
 
 	//The following is for the random generation of enemies
@@ -29,7 +29,7 @@ private:
 	void randomizeSelector();
 public:
 	//Default constructor
-	enemy(const enemy &);
+	enemy(const enemy & e1);
 	enemy(int floorLevel);
 	//Enemy Constructor. Enter Name, MaxHP, hpCurrent, damage, and level
 	enemy(string n, int max, int hp, int ad, int lvl);
@@ -44,6 +44,8 @@ public:
 	//Modifiers!
 	void modHealth(int input);
 	void modDamage(int input);
+
+	//enemy(const enemy& e1);
 
 	//Example Usage: 
 	//cout << enemyName << endl;

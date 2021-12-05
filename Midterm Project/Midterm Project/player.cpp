@@ -19,6 +19,14 @@ player::player(string iname, int igetMaxHP, int igetHP, int igetDMG, int igetBal
     balance = igetBal;
 }
 
+player::player(string name, int igetMaxHP, int igetHP, int igetDMG, int level) {
+    this->name = name;
+    maxHealth = igetMaxHP;
+    healthPoints = igetHP;
+    attackDamage = igetDMG;
+    this->level = level;
+}
+
 //Getters
 string player::getName() {
     return name;

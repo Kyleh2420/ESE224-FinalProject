@@ -46,11 +46,11 @@ enemy::enemy(int floorLevel) {
     //The following reads in the enemy list into the corresponding vector lists.
     getLineCount();
     randomizeSelector();
-    name = listOfNames[selector];
-    maxHealth = listOfMaxHP[selector];
-    healthPoints = listOfHP[selector];
-    attackDamage = listOfAD[selector];
-    level = listOfLevel[selector];
+    player::name = listOfNames[selector];
+    player::maxHealth = listOfMaxHP[selector];
+    player::healthPoints = listOfHP[selector];
+    player::attackDamage = listOfAD[selector];
+    player::level = listOfLevel[selector];
 }
 
 enemy::enemy(string n, int max, int hp, int ad, int lvl) {
@@ -114,7 +114,11 @@ void enemy::randomizeSelector() {
     srand(time(0));
     selector = rand() % listOfNames.size();
 }
-
-enemy::enemy (const enemy&) {
-
+int ignorethis = 0;
+enemy::enemy(const enemy& e1) {
+    name = e1.name;
+    maxHealth = e1.maxHealth;
+    healthPoints = e1.healthPoints;
+    attackDamage = e1.attackDamage;
+    level = e1.level;
 }

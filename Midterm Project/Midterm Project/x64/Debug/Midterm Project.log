@@ -1,14 +1,3 @@
-<<<<<<< HEAD
-﻿  floor.cpp
-D:\Stony Brook University\2 - Sophomore Year\ESE 224\Final Project\ESE224-FinalProject\Midterm Project\Midterm Project\floor.cpp(43,19): warning C4244: 'initializing': conversion from '_Rep' to 'unsigned int', possible loss of data
-          with
-          [
-              _Rep=std::chrono::system_clock::rep
-          ]
-  main.cpp
-D:\Stony Brook University\2 - Sophomore Year\ESE 224\Final Project\ESE224-FinalProject\Midterm Project\Midterm Project\main.cpp(192,16): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-  Generating Code...
-  Midterm Project.vcxproj -> D:\Stony Brook University\2 - Sophomore Year\ESE 224\Final Project\ESE224-FinalProject\Midterm Project\x64\Debug\Midterm Project.exe
-=======
-﻿  Midterm Project.vcxproj -> C:\Users\d4ng9\Desktop\final\Midterm Project\x64\Debug\Midterm Project.exe
->>>>>>> 6381397460469b3b9936022e8b5799ced3067cb5
+﻿  enemy.cpp
+C:\Users\d4ng9\Desktop\ESE224 - FInal Project\Midterm Project\Midterm Project\enemy.cpp(114,15): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+  Midterm Project.vcxproj -> C:\Users\d4ng9\Desktop\ESE224 - FInal Project\Midterm Project\x64\Debug\Midterm Project.exe

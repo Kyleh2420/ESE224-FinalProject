@@ -3,7 +3,7 @@
 using namespace std;
 
 class player {
-protected:
+public:
 	//Player Name
 	string name;
 	//Max hp of player
@@ -16,10 +16,12 @@ protected:
 	int balance;
 	//Current weapon held by the player
 	string weaponName;
-public:
+	int level;
+//public:
 	//Default Constructor
 	player();
 	player(string iname, int igetMaxHP, int igetHP, int igetDMG, int igetBal, string iweapon);
+	player(string name, int igetMaxHP, int igetHP, int igetDMG, int level);
 
 	//Getters!
 	string getName();
