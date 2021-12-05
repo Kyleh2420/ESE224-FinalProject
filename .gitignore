@@ -1,4 +1,6 @@
 .vs/
+.x64/
+.Midterm Project/x64/
 *.txt
 !Midterm Project/Midterm Project/F0RandomEvents.txt
 !Midterm Project/Midterm Project/F1RandomEvents.txt
