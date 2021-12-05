@@ -300,7 +300,7 @@ void checkQuest(player& p1, scoreboard& p1Scoreboard)
 		if (p1.getWeapon() == "Hand")
 		{
 			questCompleted.push("Don't Need a Weapon");
-			p1Scoreboard.addBonus(2);//temp value
+			//p1Scoreboard.addBonus(2);//temp value
 			cout << "Congratulations, you've completed (Don't need a weapon). You've earned 2 bonus points!" << endl;
 			p1Scoreboard.addBonus(2);
 		}
@@ -310,7 +310,7 @@ void checkQuest(player& p1, scoreboard& p1Scoreboard)
 		if (p1.getBal() >= 10)
 		{
 			questCompleted.push("Money in the Bank");
-			p1Scoreboard.addBonus(10);//temp value
+			//p1Scoreboard.addBonus(10);//temp value
 			cout << "Congratulations, you've completed (Money in the Bank). You've earned 10 bonus points!" << endl;
 			p1Scoreboard.addBonus(10);
 		}
@@ -320,7 +320,7 @@ void checkQuest(player& p1, scoreboard& p1Scoreboard)
 		if (p1.getDMG() > p1.getMaxHP())
 		{
 			questCompleted.push("Glass Cannon");
-			p1Scoreboard.addBonus(p1.getDMG());//temp value
+			//p1Scoreboard.addBonus(p1.getDMG());//temp value
 			cout << "Congratulations, you've completed (Glass Canon). You've earned "<< p1.getDMG() << " bonus points!" << endl;
 			p1Scoreboard.addBonus(p1.getDMG());
 		}
@@ -330,8 +330,8 @@ void checkQuest(player& p1, scoreboard& p1Scoreboard)
 		if ((p1.getHP() / p1.getMaxHP()) >= 0.2)
 		{
 			questCompleted.push("Just a Scratch");
-			p1Scoreboard.addBonus(p1.getHP());//temp value
-			cout << "Congratulations, you've completed (Glass Canon). You've earned " << p1.getHP() << " bonus points!" << endl;
+			//p1Scoreboard.addBonus(p1.getHP());//temp value
+			cout << "Congratulations, you've completed (Just a Scratch). You've earned " << p1.getHP() << " bonus points!" << endl;
 			p1Scoreboard.addBonus(p1.getHP());
 		}
 		break;
@@ -377,19 +377,18 @@ void game(player& p1, scoreboard& p1Scoreboard, fileOperations& files) {
 			cout << "Current Side Quest: (Don't Need a Weapon) Don't buy a weapon, Pass this floor with only the default weapon." << endl;
 			break;
 		case 1:
-			checkQuest(p1, p1Scoreboard);
+			//checkQuest(p1, p1Scoreboard);
 			cout << "Current Side Quest: (Money in the Bank) Save at least 10 coins." << endl;
 			break;
 		case 2:
-			checkQuest(p1, p1Scoreboard);
+			//checkQuest(p1, p1Scoreboard);
 			cout << "Current Side Quest: (Glass Cannon) Get damage higher than max HP." << endl;
 			break;
 		case 3:
-			checkQuest(p1, p1Scoreboard);
+			//checkQuest(p1, p1Scoreboard);
 			cout << "Current Side Quest: (Just a Scratch) Survive with at least 20% HP remaining." << endl;
 			break;
 		case 4:
-			checkQuest(p1, p1Scoreboard);
 			break;
 		}
 		//We stay in this while loop as long as the usre has not reached the maximum position 
@@ -503,10 +502,12 @@ void game(player& p1, scoreboard& p1Scoreboard, fileOperations& files) {
 			p1Scoreboard.setPos(0);
 			//Clear the screen and introduce the new level
 			cout << "\033[2J\033[1;1H";
+			checkQuest(p1, p1Scoreboard);
 			
 			//We can check if the user has reached the last floor. If they have, then we can exit the main game loop
 			//If the user has reached the last floor, we can confirm the user has completed the game!
 			if (p1Scoreboard.getFloor() == 4) {
+				//checkQuest(p1, p1Scoreboard);
 				loop = false;
 				if (p1Scoreboard.getScore() > 10) {
 					//We clear the screen
