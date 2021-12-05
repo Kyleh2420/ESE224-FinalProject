@@ -15,6 +15,7 @@
 #include <stack>
 #include <queue>
 #include<list>
+#include <utility>
 fstream myFile;
 //scoreboard.h don't need to be called, since they are already called in fileOperations.h
 // player.h is called in enemy.h
@@ -23,14 +24,29 @@ using namespace std;
 
 stack<int> combatloghealthstack;
 stack<string> combatlognamestack;
-stack<string> enemeystack;
-stack<int> enemeystacklevel;
+stack<pair<string,int>> enemeystack;
+//stack<int> enemeystacklevel;
 queue<string> questCompleted;
 
 void addtoenemystack(enemy& e1) //function to add enemy to enemystack
 {
-	enemeystack.push(e1.getName());
-	enemeystacklevel.push(e1.getLvl());
+	enemeystack.push(make_pair(e1.getName(), e1.getLvl()));
+}
+
+void reverseStack(stack<pair<string, int>>& st)
+{
+	pair<string, int> item;
+	stack<pair<string, int>> tmpStack;
+
+	while (st.empty() == false)
+	{
+		item = st.top();
+		st.pop();
+		tmpStack.push(item);
+	}
+
+	st = tmpStack;
+	return;
 }
 
 void reverseStacknum(stack<int> &st) //function to reverse any stack that has numbers
@@ -67,13 +83,17 @@ void reverseStackname(stack<string>& st) //function to reverse any stack that ha
 
 void printenemiesdefeated() //function to print out stack containing list of defeated enemies
 {
-	reverseStackname(enemeystack);
-	reverseStacknum(enemeystacklevel);
+	reverseStack(enemeystack);
+	//reverseStackname(enemeystack);
+	//reverseStacknum(enemeystacklevel);
 	cout << "Enemies defeated: \n";
 	while (!enemeystack.empty()) {
-		cout << enemeystack.top() << " Level: " << enemeystacklevel.top() << '\n';
+		//cout << enemeystack.top() << " Level: " << enemeystacklevel.top() << '\n';
+		//enemeystack.pop();
+		//enemeystacklevel.pop();
+
+		cout << enemeystack.top().first << " Level: " << enemeystack.top().second << '\n';
 		enemeystack.pop();
-		enemeystacklevel.pop();
 	}
 	cout << endl;
 }

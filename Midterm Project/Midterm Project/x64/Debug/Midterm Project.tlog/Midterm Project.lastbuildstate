@@ -1,2 +1,7 @@
+<<<<<<< HEAD
 PlatformToolSet=v142:VCToolArchitecture=Native32Bit:VCToolsVersion=14.29.30133:TargetPlatformVersion=10.0.22000.0:
 Debug|x64|D:\Stony Brook University\2 - Sophomore Year\ESE 224\Final Project\ESE224-FinalProject\Midterm Project\|
+=======
+PlatformToolSet=v142:VCToolArchitecture=Native32Bit:VCToolsVersion=14.29.30133:TargetPlatformVersion=10.0.19041.0:
+Debug|x64|C:\Users\d4ng9\Desktop\final\Midterm Project\|
+>>>>>>> 6381397460469b3b9936022e8b5799ced3067cb5
