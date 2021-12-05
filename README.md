@@ -1,5 +1,4 @@
 # Current To Do List
-* Dont need class templates no more LETS GOOOOO
 * Final project time 
 * BUGS 
   * Bugs go here
