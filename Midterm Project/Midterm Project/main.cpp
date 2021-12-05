@@ -716,6 +716,11 @@ int main() {
 	cout << "\033[2J\033[1;1H";
 	game(p1, p1Scoreboard, files);
 	files.save2File(p1Scoreboard, p1);
+	while (!questCompleted.empty())
+	{
+		cout << questCompleted.front() << endl;
+		questCompleted.pop();
+	}
 	beginning:cout << "OPTION: Would you like to view the scoreboard in alphabetical order?(Y/N)\n";
 	char choice;
 	cin >> choice;

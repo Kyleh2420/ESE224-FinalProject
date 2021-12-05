@@ -1,6 +1,7 @@
 #include "Weapon.h"
 #include <iomanip>
 
+/*
 weapon::weapon() {
     wItem = "";
     wDamage = 0;
@@ -53,6 +54,7 @@ void weapon::setHP(int i) {
 }
 
 
+*/
 
 //The following is for weaponNode, the doubly linked list version of the shop
 

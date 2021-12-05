@@ -3,6 +3,7 @@
 #include <iostream>
 using namespace std;
 
+/*
 class weapon {
 private:
 	string wItem;
@@ -29,7 +30,7 @@ public:
 	int getHP();
 };
 
-
+*/
 
 //Node for the weapons shop
 class weaponNode {
