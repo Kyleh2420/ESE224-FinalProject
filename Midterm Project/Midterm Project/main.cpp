@@ -341,6 +341,7 @@ void checkQuest(player& p1, scoreboard& p1Scoreboard)
 }
 
 void game(player& p1, scoreboard& p1Scoreboard, fileOperations& files) {
+	srand(time(0));
 	bool loop;
 	bool dead = false;
 	char selection;

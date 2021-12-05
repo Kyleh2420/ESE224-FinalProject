@@ -3,3 +3,10 @@
 3 2 3 1 A single goblin
 6 4 3 2 Hoard of Goblins
 4 3 2 1 Bats
+5 5 3 1 Satan's Little Minions
+2 2 2 1 Gnomes
+3 3 1 1 Demons
+3 2 1 1 Three Headed Dog
+4 4 2 1 Centaur
+6 5 3 1 A group of centaurs
+4 4 3 1 Chimera

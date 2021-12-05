@@ -18,8 +18,7 @@ gameFloor::gameFloor(int inpLevel, int pos) {
             //If i is less than the number of enemies that must be created, create the enemy (aka pushback 1 to the vector)
             if (i < floorSettings[floorLevel][0]) {
                 floorSetup.push_back(1);
-                enemy e1(inpLevel);
-                enemy pushthis = e1;
+                enemy pushthis(inpLevel);
                 enemyList.push(pushthis);
                 //If i is less than the # of enemies + the number of random encounters, create the random encounter (aka pushback 0 to the vector)
             }

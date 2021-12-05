@@ -111,7 +111,6 @@ ostream& operator << (ostream& os, const enemy& e) {
 
 
 void enemy::randomizeSelector() {
-    srand(time(0));
     selector = rand() % listOfNames.size();
 }
 int ignorethis = 0;
