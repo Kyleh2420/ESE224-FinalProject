@@ -131,6 +131,10 @@
     * Added sections for documentation for all the tasks 
   * Derrick 
     * Did task 1 and 3 and the score sorting for task 2.
+#### 12/5 
+  * William
+    * finished kyle's broken task 9. Did some googling, found a solution that works
+    * HOLY FUCK IM TIRED. time of wrting this: 3:40am
 # ESE224-Final/MidtermProject
 
 Stony Brook University's ESE 224 Final/Midterm Project
