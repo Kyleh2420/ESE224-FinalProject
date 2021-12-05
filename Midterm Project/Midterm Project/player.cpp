@@ -110,9 +110,8 @@ void player::modMaxHP(int input) {
     maxHealth += input;
 }
 ostream& operator <<(ostream& os, const player& p) {
-    os << "\nName: " << p.name << "\nMax Health: " << p.maxHealth 
-    << "\nHP: " <<  p.healthPoints << "\nWeapon: " << p.weaponName
-    << "\nDamage: " << p.attackDamage <<"\nBalance: " << p.balance
-    << endl;
+    os << "\nName: " << p.name << "\nMax Health: " << p.maxHealth
+        << "\nHP: " << p.healthPoints << "\nWeapon: " << p.weaponName
+        << "\nDamage: " << p.attackDamage << "\nBalance: " << p.balance;
     return os;
 }

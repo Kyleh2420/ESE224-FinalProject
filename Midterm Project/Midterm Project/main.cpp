@@ -108,7 +108,6 @@ void printcombatlog() //function to print combat log
 		combatlognamestack.pop();
 		combatloghealthstack.pop();
 	}
-	cout << endl;
 }
 
 void addtocombatlogplayer(player& p1) //function to add player info to combat log stack
@@ -602,11 +601,11 @@ void scoreboardList(std::list<scoreboard>& list) {
 		list.push_back(p1Scoreboard);
 	}
 }
-//Create a function to ask the user for a nameand to then search for that name in the list.
+//Create a function to ask the user for a name and to then search for that name in the list.
 //All players with that name should be outputted with their scores to the console screen.
 //Use any search method that you prefer.
 void askName(std::list<scoreboard>& list) {
-	cout << "\n Enter a name to search for in the Scoreboard (Note: case Sensitive: ";
+	cout << "Enter a name to search for in the Scoreboard (Note: case Sensitive): ";
 	string name;
 	cin >> name;
 	bool nameFound = false;
@@ -765,6 +764,7 @@ int main() {
 	cout << "\033[2J\033[1;1H";
 	game(p1, p1Scoreboard, files);
 	files.save2File(p1Scoreboard, p1);
+	cout << "Quests completed: \n";
 	while (!questCompleted.empty())
 	{
 		cout << questCompleted.front() << endl;
