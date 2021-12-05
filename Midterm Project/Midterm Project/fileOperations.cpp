@@ -179,6 +179,7 @@ void fileOperations::chooseFile(scoreboard& s, player& p) {
     sb_myFile >> inputInt;
     s.setBonus(inputInt);
     sb_myFile >> inputInt;
+    sb_myFile >> inputInt;
     s.setDiff(inputInt);
     sb_myFile >> inputInt;
     s.setFloor(inputInt);
