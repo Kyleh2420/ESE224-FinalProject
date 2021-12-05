@@ -109,12 +109,16 @@ void weaponsShop::shopStartup(player& p1) {
 //Below this point is used for weaponShopv2, the second iteration of weaponsShop
 
 
+//WeaponsShop.cpp/h now has 2 classes within it, the class that creates the doubly linked list (weaponsShopv2), and the driver class itself that runs it (shop)
+
+//Sets up the linked list
 weaponsShopv2::weaponsShopv2() {
     head = NULL;
     tail = NULL;
     current = NULL;
 }
 
+//Adds a new weapon to the end of the doubly linked list
 void weaponsShopv2::addWeapon(weaponNode* weapon) {
     if (head == NULL) {
         head = current = tail = weapon;
@@ -125,6 +129,7 @@ void weaponsShopv2::addWeapon(weaponNode* weapon) {
     }
 }
 
+//ALlows the player to move the current selection forward
 void weaponsShopv2::moveToNext() {
     if (current->getNext() == NULL) {
         cout << "We can't move to the next!" << endl;
@@ -133,6 +138,7 @@ void weaponsShopv2::moveToNext() {
     }
 }
 
+//Allows the player to move the current selection backward
 void weaponsShopv2::moveToPrev() {
     if (current->getPrev() == NULL) {
         cout << "We can't move to the previous!" << endl;
@@ -141,15 +147,18 @@ void weaponsShopv2::moveToPrev() {
     }
 }
 
+//Moves to the head of the lsit
 void weaponsShopv2::moveToHead() {
     current = head;
 }
 
+//Moves to the tail of the list
 void weaponsShopv2::moveToTail() {
     current = tail;
 }
 
 
+//The print all function, used to display the contents of the list when the shop is called.
 void weaponsShopv2::printAll() {
 	//We start from the very very beginning, the head.
 	weaponNode* tmp = head;
@@ -159,11 +168,11 @@ void weaponsShopv2::printAll() {
 		cout << "There are no weapons" << endl;
 		return;
 	}
-	//Loops through the whole thing until tmp is Null (Or rather, when the next one does not exist)
     cout <<setw(4) << right << "Cost"
         <<setw(11) << right << "Effect"
         <<setw(10) << right << "Item" << endl;
 	
+	//Loops through the whole thing until tmp is Null (Or rather, when the next one does not exist)
 	while (tmp != NULL) {
 		if (tmp->getItem().compare(current->getItem()) == 0)
 			cout << "*";
@@ -172,6 +181,8 @@ void weaponsShopv2::printAll() {
 	}
 }
 
+//Will delete and free up the memory space from the doubly linked list.
+//Will be called when we change floors
 void weaponsShopv2::deleteAll() {
     moveToHead();
     while (current->getNext() != NULL) {
@@ -181,15 +192,20 @@ void weaponsShopv2::deleteAll() {
     free(current);
 }
 
+//Will be called to allow the user to purcahse a product
 weaponNode* weaponsShopv2::purchaseProduct(player & p1) {
     char selection;
+    //See if the player can afford said product. If so, then do it.
     if (p1.getBal() < current->getCost()) {
         cout << "Sorry, you can't afford " << current->getItem() << endl;
-    } else if (p1.getBal() >= current->getCost()) {
+    } else {
+        //Confirm that the user wants to purchase the product
         cout << "Ready to purcahse " << current->getItem() << "? Your new balance will be "
             << p1.getBal() - current->getCost() << ". Enter Y/N: ";
         cin >> selection;
+        //Lowercase to limit the number of cases
         selection = tolower(selection);
+        //If they do, then alter their stats accordingly.
         if (selection == 'y') {
             //If the damage is 0, then it is a potion
             if (current->getDMG() == 0) {
@@ -201,11 +217,14 @@ weaponNode* weaponsShopv2::purchaseProduct(player & p1) {
             }
             p1.modBal(-current->getCost());
             cout << "You brought " << current->getItem() << "!" << endl;
+            //Return the item that was brought for the stack
             return current;
         } else {
             cout << "Alright, we won't buy that item" << endl;
         }
     }
+    //If we exit the function this way, the user hasn't brought anything.
+    //Return NULL so that we don't add a random value to the stack
     return NULL;
 }
 //Sets up the shop by reading in a file and creating the doubly linked list required.
@@ -230,12 +249,14 @@ shop::shop(player& p1, int floor) {
     weaponFile.open(weaponFileName);
     if (weaponFile.fail()) {
         cerr << "We couldn't open the weapons file. You'll have to stick with your fist" << endl;
+        //If there is an error loading the file, this flag is here to prevent the shop from running
         flag = true;
         p1.setWeapon("Hand");
         p1.setDMG(2);
         return;
     }
 
+    //Read in from the file the stats and items that go in the shop
     while(!weaponFile.eof()) {
         weaponFile >> cost >> dmg >> maxHP >> HP;
         weaponFile.seekg(1, std::ios_base::cur);
@@ -246,11 +267,14 @@ shop::shop(player& p1, int floor) {
     }
 }
 
+//The main running code to run this here shop
 void shop::runShop(player& p1) {
     char selection;
+    //This flag is here to ensure that there is a linked list loaded for the user to purchase from
     if (!flag) {
         listOfWeapons.moveToHead();
         while (true) {
+            //User Interface
             cout << "Your Options: \n";
             listOfWeapons.printAll();
             cout << "You currently have " << p1.getBal() << " coins" << endl;
@@ -260,8 +284,11 @@ void shop::runShop(player& p1) {
                 << "\nD: Purchase the product" << endl;
             cout << "Your selection: ";
             cin >> selection;
+            //tolower to limit the number of selections
             selection = tolower(selection);
+            //I chose wasd because it was the most familiar and elegant. ws to go up or down, d to proceed, or a to go back
             switch (selection) {
+                //If we go back, empty the stack and print out the user's purchases
                 case 'a':
                     while (!itemStack.empty()) {
                         tmp = itemStack.top();
@@ -279,6 +306,7 @@ void shop::runShop(player& p1) {
                     break;
                 case 'd':
                     tmp = listOfWeapons.purchaseProduct(p1);
+                    //If the product was null (Nothing was purchased), then dont' add it to the stack
                     if (tmp != NULL) {
                         itemStack.push(tmp);
                     }

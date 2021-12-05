@@ -31,6 +31,8 @@ class weaponsShop {
 };
 */
 
+//This class, similar to the pokemon lab(pokedex), creates the linked list using the class weaponNode (pokeNode)
+//It is then run by the driver class shop (pokemonTrainer)
 class weaponsShopv2 {
     private:
         typedef weaponNode* weaponNodePtr;
@@ -55,14 +57,18 @@ class weaponsShopv2 {
 //THe driver class for the weaponsShopv2 class
 class shop {
     private:
+    //File loading and declaring an active linked list
     fstream weaponFile;
     string weaponFileName;
     weaponsShopv2 listOfWeapons;
     //Flag will go true if the file could not be opened
     bool flag = false;
 
+    //Shopping tracker variables
     weaponNode* tmp;
     stack <weaponNode*> itemStack;
+
+
     //Tmp vars to be loaded in
     int cost=0, dmg=0;
     int maxHP=0, HP=0;

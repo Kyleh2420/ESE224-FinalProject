@@ -58,6 +58,7 @@ void weapon::setHP(int i) {
 
 //The following is for weaponNode, the doubly linked list version of the shop
 
+//To create a new node
 weaponNode::weaponNode(string name, int dmg, int cost, int maxHP, int HP) {
     this->item = name;
     this->dmg = dmg;
@@ -67,23 +68,30 @@ weaponNode::weaponNode(string name, int dmg, int cost, int maxHP, int HP) {
 }
 
 //Setters!
+
+//Points to the next item in the shop
 void weaponNode::setNext(weaponNode* next) {
     this->next = next;
 }
 
+//Points to the previous item in the shop
 void weaponNode::setPrev(weaponNode* prev) {
     this->prev = prev;
 }
 
+//Returns the next item in the shop
 weaponNode* weaponNode::getNext() {
     return next;
 }
 
+//Returns the previous item in the shop
 weaponNode* weaponNode::getPrev() {
     return prev;
 }
 
 //Getters!
+
+//Returns the name of the item
 string weaponNode::getItem() {
     return item;
 }
@@ -103,6 +111,7 @@ int weaponNode::getHP() {
 }
 
 
+//Will print out different text based on whether is potion or not
 void weaponNode::print() {
     cout << " ";
     if (getDMG() != 0) {
