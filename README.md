@@ -129,8 +129,8 @@
   * Vincent
     * did most of task 6 but said no to class template and didnt use operator overloading
     * Added sections for documentation for all the tasks 
-  *Derrick 
-    *Did task 1 and 3 and the score sorting for task 2.
+  * Derrick 
+    * Did task 1 and 3 and the score sorting for task 2.
 # ESE224-Final/MidtermProject
 
 Stony Brook University's ESE 224 Final/Midterm Project
