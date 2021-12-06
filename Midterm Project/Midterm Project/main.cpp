@@ -590,7 +590,7 @@ void scoreboardList(std::list<scoreboard>& list) {
 	//Read Scored Board
 	myFile.open("scoreboard.txt", ios::in);
 	if (myFile.fail()) {
-		cerr << "Error saving the file! Please try again7!" << endl;
+		cerr << "Error saving the file! Please try again!" << endl;
 		exit(1);
 	}
 	vector<string> names;
@@ -850,7 +850,9 @@ int main() {
 				break;
 			case 'e':
 				pregameSetup();
-
+				myFile.close();
+				list1.clear();
+				scoreboardList(list1);
 				break;
 			case 'f':
 				cout << "Ending Game" << endl;
