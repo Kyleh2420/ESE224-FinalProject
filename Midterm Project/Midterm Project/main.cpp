@@ -272,12 +272,12 @@ bool playerOptions(player& p1, fileOperations& files, scoreboard& p1Scoreboard) 
 			break;
 		case '5':
 			cout << "\nYou selected 'Save and Quit'" << endl;
-			cout << "Quests Completed:" << endl;
+			/*cout << "Quests Completed:" << endl;
 			while (!questCompleted.empty())
 			{
 				cout << questCompleted.front()<<endl;
 				questCompleted.pop();
-			}
+			}*/
 			files.save2File(p1);
 			files.save2File(p1Scoreboard);
 			files.closeFile();
