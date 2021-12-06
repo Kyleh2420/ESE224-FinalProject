@@ -819,6 +819,7 @@ int main() {
 		switch(selection) {
 			case 'a':
 				list1.sort();
+				list1.reverse();
 				for (auto v : list1) {
 					cout << "Name: " << setw(16) << left << v.getName()
 						<< "Score: " << setw(10) << left << v.getScore() << "\n";
