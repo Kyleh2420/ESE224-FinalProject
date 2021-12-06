@@ -502,7 +502,7 @@ void game(player& p1, scoreboard& p1Scoreboard, fileOperations& files) {
 			p1Scoreboard.setPos(0);
 			//Clear the screen and introduce the new level
 			cout << "\033[2J\033[1;1H";
-			checkQuest(p1, p1Scoreboard);
+			
 			
 			//We can check if the user has reached the last floor. If they have, then we can exit the main game loop
 			//If the user has reached the last floor, we can confirm the user has completed the game!
@@ -533,6 +533,8 @@ void game(player& p1, scoreboard& p1Scoreboard, fileOperations& files) {
 				cout << "\033[2J\033[1;1H";
 				cout << "A booming voice around you yells \"Congratulations, you have passed this level!\"" << endl;
 			}
+
+			checkQuest(p1, p1Scoreboard);
 		}
 	}
 	
@@ -677,33 +679,18 @@ void averageScoreboard(std::list<scoreboard>& list1, std::list<scoreboard>& newl
 
 
 //should maybe keep the main program and then make another bigger menu program for all the menu stuff that has the scoreboard, search by name, enter game, quit, etc
-int main() {
+void pregameSetup() {
 	player p1;
 	scoreboard p1Scoreboard;
 	fileOperations files;
 
-	list <scoreboard> list1;
-	scoreboardList(list1);
+	
 
-	//Ask for a name
-	askName(list1);
-
-	list1.sort();
-	for (auto v : list1) {
-		cout << "Name: " << setw(16) << left << v.getName()
-			<< "Score: " << setw(10) << left << v.getScore() << "\n";
-	}
+	
 
 
 
-	//Average score board
-	list <scoreboard> avg;
-	averageScoreboard(list1, avg);
-	cout << "Average: \n";
-	for (auto v : avg) {
-		cout << "Name: " << setw(16) << left << v.getName()
-			<< "Score: " << setw(10) << left << v.getScore() << "\n";
-	}
+	
 	//The following will loop through the player's starting options 
 	//The User will select whether or not a new file is created or loaded.
 	//If a new file is created, it will Ask for the players name and difficulty, then save those to 
@@ -794,5 +781,64 @@ int main() {
 		default:
 			cout << "That wasn't an option!" << endl;
 			goto beginning;
+	}
+}
+
+int main() {
+	char selection;
+	list <scoreboard> list1;
+	list <scoreboard> avg;
+	scoreboardList(list1);
+	while (true) {
+		cout << "Main Menu:"
+			<< "\n(a) Scoreboard sorted by score"
+			<< "\n(b) Scoreboard sorted by name"
+			<< "\n(c) Averaged Scoreboard"
+			<< "\n(d) Search by Name"
+			<< "\n(e) Enter game" 
+			<< "\n(f) Exit Game" << endl;
+		cout << "You entered: ";
+		cin >> selection;
+		selection = tolower(selection);
+		switch(selection) {
+			case 'a':
+				cout << "That feature isn't ready yet" << endl;
+				break;
+			case 'b':
+				cout << "Sorting scoreboard by name" << endl;
+				//Ask for a name
+				askName(list1);
+
+				list1.sort();
+				for (auto v : list1) {
+					cout << "Name: " << setw(16) << left << v.getName()
+						<< "Score: " << setw(10) << left << v.getScore() << "\n";
+				}		
+				break;
+			case 'c':
+				cout << "Averaging Scorebaord..." << endl;
+				//Average score board
+				
+				averageScoreboard(list1, avg);
+				cout << "Average: \n";
+				for (auto v : avg) {
+					cout << "Name: " << setw(16) << left << v.getName()
+						<< "Score: " << setw(10) << left << v.getScore() << "\n";
+				}
+				break;
+			case 'd':
+				cout << "Search by name." << endl;
+				break;
+			case 'e':
+				pregameSetup();
+				break;
+			case 'f':
+				cout << "Ending Game" << endl;
+				exit(0);
+				break;
+			default:
+				cout << "That wasn't an option!" << endl;
+				break;
+		}
 	}
 }
