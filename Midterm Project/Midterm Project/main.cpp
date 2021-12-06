@@ -683,13 +683,6 @@ void pregameSetup() {
 	player p1;
 	scoreboard p1Scoreboard;
 	fileOperations files;
-
-	
-
-	
-
-
-
 	
 	//The following will loop through the player's starting options 
 	//The User will select whether or not a new file is created or loaded.
@@ -768,6 +761,7 @@ void pregameSetup() {
 		cout << questCompleted.front() << endl;
 		questCompleted.pop();
 	}
+	/*
 	beginning:cout << "OPTION: Would you like to view the scoreboard in alphabetical order?(Y/N)\n";
 	char choice;
 	cin >> choice;
@@ -782,6 +776,7 @@ void pregameSetup() {
 			cout << "That wasn't an option!" << endl;
 			goto beginning;
 	}
+	*/
 }
 
 int main() {
@@ -789,6 +784,14 @@ int main() {
 	list <scoreboard> list1;
 	list <scoreboard> avg;
 	scoreboardList(list1);
+
+	struct scoreboardComparator {
+		bool operator() (scoreboard& p1, scoreboard& p2) const {
+			if (p1.getName() == p2.getName())
+				return p1 < p2;
+			return p1.getName() < p2.getName();
+		}
+	};
 	while (true) {
 		cout << "Main Menu:"
 			<< "\n(a) Scoreboard sorted by score"
@@ -802,19 +805,20 @@ int main() {
 		selection = tolower(selection);
 		switch(selection) {
 			case 'a':
-				cout << "That feature isn't ready yet" << endl;
-				break;
-			case 'b':
-				cout << "Sorting scoreboard by name" << endl;
-				//Ask for a name
-				askName(list1);
-
 				list1.sort();
 				for (auto v : list1) {
 					cout << "Name: " << setw(16) << left << v.getName()
 						<< "Score: " << setw(10) << left << v.getScore() << "\n";
-				}		
+				}
 				break;
+			case 'b':
+				cout << "Sorting scoreboard by name" << endl;
+				list1.sort(scoreboardComparator());
+				for (auto v : list1) {
+					cout << "Name: " << setw(16) << left << v.getName()
+						<< "Score: " << setw(10) << left << v.getScore() << "\n";
+				}		//alphabeticalScore(files, p1, p1Scoreboard);
+			break;
 			case 'c':
 				cout << "Averaging Scorebaord..." << endl;
 				//Average score board
@@ -827,7 +831,8 @@ int main() {
 				}
 				break;
 			case 'd':
-				cout << "Search by name." << endl;
+				//Ask for a name
+				askName(list1);
 				break;
 			case 'e':
 				pregameSetup();

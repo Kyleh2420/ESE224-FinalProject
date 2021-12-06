@@ -40,6 +40,7 @@ public:
 
     bool operator == (const scoreboard& s) const;
     bool operator < (const scoreboard& s) const;
+    bool operator() (const scoreboard& p1, const scoreboard& p2) const;
 
     void addScore(int input);
     void addBonus(int input);
