@@ -259,7 +259,6 @@ shop::shop(player& p1, int floor) {
     //Read in from the file the stats and items that go in the shop
     while(!weaponFile.eof()) {
         weaponFile >> cost >> dmg >> maxHP >> HP;
-        weaponFile.seekg(1, std::ios_base::cur);
         getline(weaponFile, name);
 
         //Add it to the linked list
