@@ -836,7 +836,7 @@ int main() {
 			case 'c':
 				cout << "Averaging Scorebaord..." << endl;
 				//Average score board
-				
+				avg.clear();
 				averageScoreboard(list1, avg);
 				cout << "Average: \n";
 				for (auto v : avg) {
