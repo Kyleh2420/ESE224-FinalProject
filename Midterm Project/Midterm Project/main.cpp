@@ -233,7 +233,7 @@ void playerCombat(player& p1, enemy e1, scoreboard& p1Scoreboard) {
 //1. Examine themselves
 //2. See the scorboard
 //3. Save and Quit
-void playerOptions(player& p1, fileOperations& files, scoreboard& p1Scoreboard) {
+bool playerOptions(player& p1, fileOperations& files, scoreboard& p1Scoreboard) {
 	shop store(p1, p1Scoreboard.getFloor());
 	char selection;
 	bool loop = true;
@@ -251,20 +251,24 @@ void playerOptions(player& p1, fileOperations& files, scoreboard& p1Scoreboard) 
 			cout << "\nYou selected 'Examine Yourself'" << endl;
 			cout << p1 << endl;
 			loop = false;
+			return false;
 			break;
 		case '2':
 			cout << "\nYou selected 'See the scoreboard'" << endl;
 			cout << p1Scoreboard << endl;
 			loop = false;
+			return false;
 			break;
 		case '3':
 			cout << "\nYou selected 'Enter the shop'" << endl;
 			loop = false;
 			store.runShop(p1);
+			return false;
 			break;
 		case '4':
 			cout << "\nYou selected 'Exit the menu'" << endl;
 			loop = false;
+			return false;
 			break;
 		case '5':
 			cout << "\nYou selected 'Save and Quit'" << endl;
@@ -277,8 +281,8 @@ void playerOptions(player& p1, fileOperations& files, scoreboard& p1Scoreboard) 
 			files.save2File(p1);
 			files.save2File(p1Scoreboard);
 			files.closeFile();
-			exit (0);
 			loop = false;
+			return true;
 			break;
 		default:
 			cout << "That wasn't an option!" << endl;
@@ -344,6 +348,7 @@ void game(player& p1, scoreboard& p1Scoreboard, fileOperations& files) {
 	srand(time(0));
 	bool loop;
 	bool dead = false;
+	bool saveExit = false;
 	char selection;
 	//cout << "Now entering Game Portion";
 	//Storytime!
@@ -393,148 +398,156 @@ void game(player& p1, scoreboard& p1Scoreboard, fileOperations& files) {
 		}
 		//We stay in this while loop as long as the usre has not reached the maximum position 
 		//Anotherwards, repeat the following loop until we run out of positions to advance to
-		while ((playGame.getCurrentPos() < playGame.getTotalPos()-1) && loop == true) {
+		while ((playGame.getCurrentPos() < playGame.getTotalPos() - 1) && loop == true) {
 			//User Input. Gets whether the user would like to take a step or pause
 			cout << "\nThe current position is " << playGame.getCurrentPos() << "/" << playGame.getTotalPos() << endl;
 			cout << "Press [t] to take a step, or press [m] to access menu options. \nYou entered: ";
 			cin >> selection;
 			selection = tolower(selection);
-			switch(selection) {
-				case 't': //The user takes a step
-					playGame.takeStep();
-					//Now that the user has taken a step, we need to see what tile the user has landed on. Use playGame.getRandomEvent to see the tile
-					//After the user takes a step, we need to see if a random encounter has occurred
-					//Depending on what tile the user lands on, we must respond differently
-					//As a reminder:
-					//0 - Do Nothing
-					//1 - Enter combat
-					//2 - Random Event
-					//Default: Something wrong occurred. Treat this as a do nothing 
-					 switch(playGame.getRandomEvent()) {
-					 	case 1: {
-						 	cout << "You encounter an enemy" << endl;
+			switch (selection) {
+			case 't': //The user takes a step
+				playGame.takeStep();
+				//Now that the user has taken a step, we need to see what tile the user has landed on. Use playGame.getRandomEvent to see the tile
+				//After the user takes a step, we need to see if a random encounter has occurred
+				//Depending on what tile the user lands on, we must respond differently
+				//As a reminder:
+				//0 - Do Nothing
+				//1 - Enter combat
+				//2 - Random Event
+				//Default: Something wrong occurred. Treat this as a do nothing 
+				switch (playGame.getRandomEvent()) {
+				case 1: {
+					cout << "You encounter an enemy" << endl;
 					// 		//The following function requires weapons and an enemy to fight against
 					// 		//My goal is to have the enemy randomly generated out of a file, according to 
 					// 		//a preset list. 
 					// 		//Ex: Fl1Enemies.txt and Fl1Weapons.txt both contain info about what is available on each floor	
-							enemy e1(p1Scoreboard.getFloor());
+					enemy e1(p1Scoreboard.getFloor());
 
-					 		playerCombat(p1, playGame.getCurrentEnemy(), p1Scoreboard);
-							if (p1.getHP() <= 0) {
-								cout << "We're sorry, you have died!" << endl;
-								cout << "The game has now ended, but you can always restart!" << endl;
-								printenemiesdefeated();
-								//FUNCTION TO PRINT STACK GOES HERE
-								//FUNCTION TO CLEAR STACK GOES HERE
-								//2. Create an operator overload of the operator<< to print the names and level of all the
-								//enemy objects in the entire stack.
-								//3. Create a function to clear the whole stack.This function should be called at the end of
-								//the program
-								loop = false;
-								dead = true;
-							}
-							//enemyList.pop();
-					 		break;
-						}//These brackets are here to ger around the 
-						 //"Transfer of control bypasses intitalization of variable e1"
-						 //This error is caused by the case not being in it's own scope, which is solved with {}
-					 	case 2:
-						 	//cout << "A random event occurs" << endl;
-							//The following gets a random event out of the file according to the floor
-							//Generates a random line out of the list
-							event.getRandom();
-							cout << event.getEvent() << endl;
-							//The following is user interface
-							if (event.getHPChange() != 0)
-								(event.getHPChange() < 0) ? cout << "You have lost " << event.getHPChange() << "Hp" << endl : cout << "You have gained " << event.getHPChange() << "Hp" << endl;
-							if (event.getBalChange() != 0)
-								(event.getBalChange() < 0) ? cout << "You have lost " << event.getBalChange() << "coins" << endl : cout << "You have gained " << event.getBalChange() << "coins" << endl;
-							//The following affects the users stats
-							//The user cannot die from a random event. Thus, if the HP change read is negative 
-							//And is not greater 
-							if ((event.getHPChange() >= 0) || (event.getHPChange() < 0 && !(abs(event.getHPChange()) > p1.getHP()))) {
-								loop = p1.modHealth(event.getHPChange());
-							} else {
-								p1.setHP(1);
-							}
-							//The following will check if the user has died or not, and exit the floor
-							if (!loop) {
-								break;
-							}
-							p1.modBal(event.getBalChange());
-							break;
-					 	case 0:
-					 	default:
-					// 		//QuIrKy comments need to be read from a file as well
-					 		//cout << "Quirky comment here" << endl;
-							quirkyComment.getRandom();
-							cout << quirkyComment.getEvent() << endl;
-					// 		break;
-					}
-					break;
-				case 'm': //The user access a pause menu
-					p1Scoreboard.setPos(playGame.getCurrentPos());
-					playerOptions(p1, files, p1Scoreboard);
+					playerCombat(p1, playGame.getCurrentEnemy(), p1Scoreboard);
 					if (p1.getHP() <= 0) {
+						cout << "We're sorry, you have died!" << endl;
+						cout << "The game has now ended, but you can always restart!" << endl;
+						printenemiesdefeated();
+						//FUNCTION TO PRINT STACK GOES HERE
+						//FUNCTION TO CLEAR STACK GOES HERE
+						//2. Create an operator overload of the operator<< to print the names and level of all the
+						//enemy objects in the entire stack.
+						//3. Create a function to clear the whole stack.This function should be called at the end of
+						//the program
 						loop = false;
 						dead = true;
 					}
+					//enemyList.pop();
 					break;
+				}//These brackets are here to ger around the 
+				 //"Transfer of control bypasses intitalization of variable e1"
+				 //This error is caused by the case not being in it's own scope, which is solved with {}
+				case 2:
+					//cout << "A random event occurs" << endl;
+					//The following gets a random event out of the file according to the floor
+					//Generates a random line out of the list
+					event.getRandom();
+					cout << event.getEvent() << endl;
+					//The following is user interface
+					if (event.getHPChange() != 0)
+						(event.getHPChange() < 0) ? cout << "You have lost " << event.getHPChange() << "Hp" << endl : cout << "You have gained " << event.getHPChange() << "Hp" << endl;
+					if (event.getBalChange() != 0)
+						(event.getBalChange() < 0) ? cout << "You have lost " << event.getBalChange() << "coins" << endl : cout << "You have gained " << event.getBalChange() << "coins" << endl;
+					//The following affects the users stats
+					//The user cannot die from a random event. Thus, if the HP change read is negative 
+					//And is not greater 
+					if ((event.getHPChange() >= 0) || (event.getHPChange() < 0 && !(abs(event.getHPChange()) > p1.getHP()))) {
+						loop = p1.modHealth(event.getHPChange());
+					}
+					else {
+						p1.setHP(1);
+					}
+					//The following will check if the user has died or not, and exit the floor
+					if (!loop) {
+						break;
+					}
+					p1.modBal(event.getBalChange());
+					break;
+				case 0:
 				default:
-					cout << "That wasn't a valid option, please try again.";
+					// 		//QuIrKy comments need to be read from a file as well
+							//cout << "Quirky comment here" << endl;
+					quirkyComment.getRandom();
+					cout << quirkyComment.getEvent() << endl;
+					// 		break;
+				}
+				break;
+			case 'm': //The user access a pause menu
+				p1Scoreboard.setPos(playGame.getCurrentPos());
+				if (playerOptions(p1, files, p1Scoreboard)) {
+					loop = false;
+					saveExit = true;
+				}
+				if (p1.getHP() <= 0) {
+					loop = false;
+					dead = true;
+				}
+				break;
+			default:
+				cout << "That wasn't a valid option, please try again.";
 			}
 
 		}
 		//Once we exit the above loop, we know that the user has completed the floor (Has advanced as far as they can on the floor)
 		//Or the user has died, and we just exited the loop. Check p1.health's status to determine which one
-		
-		//user has died
-		if (p1.getHP() <= 0) {
-			if (dead == false) {
-				cout << "We're sorry that the game is over for you. You're more than able go and restart it!" << endl;
-				printenemiesdefeated();
-			}
+		if (saveExit) {
+			break;
 		}
 		else {
-			//Increases the floor count by 1
-			p1Scoreboard.setFloor(p1Scoreboard.getFloor() + 1);
-			//Resets the player's position on the floor back to the beginning
-			p1Scoreboard.setPos(0);
-			//Clear the screen and introduce the new level
-			cout << "\033[2J\033[1;1H";
-			
-			
-			//We can check if the user has reached the last floor. If they have, then we can exit the main game loop
-			//If the user has reached the last floor, we can confirm the user has completed the game!
-			if (p1Scoreboard.getFloor() == 4) {
-				//checkQuest(p1, p1Scoreboard);
-				loop = false;
-				if (p1Scoreboard.getScore() > 10) {
-					//We clear the screen
-					cout << "\033[2J\033[1;1H";
-					cout << "A booming voice around you tells \" Congratulations, you have collected enough organs to become a person again! Go enjoy your life\"" << endl;
+			//user has died
+			if (p1.getHP() <= 0) {
+				if (dead == false) {
+					cout << "We're sorry that the game is over for you. You're more than able go and restart it!" << endl;
 					printenemiesdefeated();
+				}
+			}
+			else {
+				//Increases the floor count by 1
+				p1Scoreboard.setFloor(p1Scoreboard.getFloor() + 1);
+				//Resets the player's position on the floor back to the beginning
+				p1Scoreboard.setPos(0);
+				//Clear the screen and introduce the new level
+				cout << "\033[2J\033[1;1H";
+
+
+				//We can check if the user has reached the last floor. If they have, then we can exit the main game loop
+				//If the user has reached the last floor, we can confirm the user has completed the game!
+				if (p1Scoreboard.getFloor() == 4) {
+					//checkQuest(p1, p1Scoreboard);
+					loop = false;
+					if (p1Scoreboard.getScore() > 10) {
+						//We clear the screen
+						cout << "\033[2J\033[1;1H";
+						cout << "A booming voice around you tells \" Congratulations, you have collected enough organs to become a person again! Go enjoy your life\"" << endl;
+						printenemiesdefeated();
+					}
+					else {
+						//We clear the screen
+						cout << "\033[2J\033[1;1H";
+						cout << "A booming voice around you yells \"It looks like you haven't collected enough organs. I will now strip you of all your organs so that you will never be able to live again. \"" << endl;
+						p1Scoreboard.setFloor(0);
+						p1.setBal(0);
+						p1.setHP(1);
+						p1.setMaxHP(1);
+						p1.setDMG(0);
+						game(p1, p1Scoreboard, files);
+					}
+					break;
 				}
 				else {
 					//We clear the screen
 					cout << "\033[2J\033[1;1H";
-					cout << "A booming voice around you yells \"It looks like you haven't collected enough organs. I will now strip you of all your organs so that you will never be able to live again. \"" << endl;
-					p1Scoreboard.setFloor(0);
-					p1.setBal(0);
-					p1.setHP(1);
-					p1.setMaxHP(1);
-					p1.setDMG(0);
-					game(p1, p1Scoreboard, files);
+					cout << "A booming voice around you yells \"Congratulations, you have passed this level!\"" << endl;
 				}
-				break;
-			}
-			else {
-				//We clear the screen
-				cout << "\033[2J\033[1;1H";
-				cout << "A booming voice around you yells \"Congratulations, you have passed this level!\"" << endl;
-			}
 
-			checkQuest(p1, p1Scoreboard);
+				checkQuest(p1, p1Scoreboard);
+			}
 		}
 	}
 	
@@ -836,6 +849,7 @@ int main() {
 				break;
 			case 'e':
 				pregameSetup();
+
 				break;
 			case 'f':
 				cout << "Ending Game" << endl;
